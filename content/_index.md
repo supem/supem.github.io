@@ -39,9 +39,9 @@ sections:
       username: admin
   - block: awards
     content:
-      title: Publiactions
+      title: Publications
       username: admin
-      
+
   # - block: languages
   #   content:
   #     title: Languages
