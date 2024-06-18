@@ -139,45 +139,11 @@ skills:
 #   - name: Portuguese
 #     percent: 0
 
-# Publications
-publications:
-  - title: "Deep Learning for Image Classification"
-    publication: "Journal of Artificial Intelligence Research"
-    date: "2023-05-15"
-    url: "https://example.com/deep-learning-image-classification"
-    description: |
-      This paper presents a novel approach to image classification using deep learning techniques. Our method outperforms traditional methods on several benchmark datasets.
-  - title: "Blockchain and Distributed Ledger Technology"
-    publication: "IEEE Transactions on Computers"
-    date: "2022-08-30"
-    url: "https://example.com/blockchain-distributed-ledger"
-    description: |
-      This study explores the underlying principles of blockchain technology and its applications in various industries. The paper also discusses potential security challenges and solutions.
-  - title: "Natural Language Processing with Python"
-    publication: "Proceedings of the 2021 Conference on Empirical Methods in Natural Language Processing"
-    date: "2021-11-20"
-    url: "https://example.com/nlp-python"
-    description: |
-      In this paper, we introduce a new framework for natural language processing tasks using Python. Our experiments show significant improvements in performance over existing models.
-
-# Projects
-projects:
-  - title: "Kidney Stone Online Detection System"
-    date: "2023-03-01"
-    description: |
-      Developed an intelligent healthcare system that leverages machine learning algorithms to predict and monitor patient health conditions. The system is designed to assist healthcare professionals in decision-making processes.
-    url: "https://github.com/yourusername/smart-healthcare-system"
-  - title: "Autonomous Driving Car"
-    date: "2022-12-15"
-    description: |
-      Led a team to create an autonomous driving car prototype using computer vision and deep learning. The project involved real-time object detection, lane following, and obstacle avoidance.
-    url: "https://github.com/yourusername/autonomous-driving-car"
-  - title: "E-commerce Recommendation Engine"
-    date: "2022-06-01"
-    description: |
-      Built a recommendation engine for an e-commerce platform that personalizes product suggestions for users based on their browsing and purchase history. Implemented using collaborative filtering and content-based filtering techniques.
-    url: "https://github.com/yourusername/ecommerce-recommendation-engine"
+awards:
+  - title: Please visit the Google Scholar website
+    url: https://scholar.google.com.hk/citations?view_op=list_works&hl=zh-CN&user=S4HPuI4AAAAJ&gmla=AJsN-F4Rehd6Xn73IKKqbgufm7yl-QKi2v01iUh-APKBgFf58xxIHYjRQwOC8KeGgSzzENTJYYC5HVdYNyKbT6s-So8SelenUKoRKuL6IXCUuyDRq9TJIadzFRxkSItc3tNWtmUmnItA
+  
 
 ---
 
-I am currently Director of Cloud Infrastructure at GenCoin where I am leading teams on edge computing, deep sea data center architecture, and hivemind optimization.
+Chao Mao is a Ph.D. candidate at the Faculty of Applied Sciences, Macao Polytechnic University, specializing in the research and application of artificial intelligence in the field of medicine. His research focuses on harnessing the power of AI for medical diagnosis and treatment. Chao Mao is dedicated to exploring innovative ways to leverage artificial intelligence in healthcare to improve the accuracy and efficiency of medical practices.

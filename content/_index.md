@@ -15,9 +15,9 @@ sections:
     content:
       username: admin
       # Show a call-to-action button under your biography? (optional)
-      button:
-        text: Download Résumé
-        url: uploads/resume.pdf
+      # button:
+      #   text: Download Résumé
+      #   url: uploads/resume.pdf
     design:
       banner:
         # Upload your cover image to the `assets/media/` folder and reference it here
@@ -37,10 +37,10 @@ sections:
     content:
       title: Skills & Hobbies
       username: admin
-  # - block: awards
-  #   content:
-  #     title: Awards
-  #     username: admin
+  - block: awards
+    content:
+      title: Publiactions
+      username: admin
   - block: publications
     content:
       title: Publications
