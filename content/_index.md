@@ -41,11 +41,11 @@ sections:
   #   content:
   #     title: Awards
   #     username: admin
-    - block: publications
+  - block: publications
     content:
       title: Publications
       username: admin
-    - block: projects
+  - block: projects
     content:
       title: Projects
       username: admin
