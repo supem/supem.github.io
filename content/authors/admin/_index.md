@@ -30,8 +30,8 @@ profiles:
   - icon: at-symbol
     url: 'maoch3@foxmail.com'
     label: E-mail Me
-  # - icon: brands/x
-  #   url: https://twitter.com/GetResearchDev
+  - icon: academicons/google-scholar
+    url: https://scholar.google.com.hk/citations?view_op=list_works&hl=zh-CN&user=S4HPuI4AAAAJ&gmla=AJsN-F4Rehd6Xn73IKKqbgufm7yl-QKi2v01iUh-APKBgFf58xxIHYjRQwOC8KeGgSzzENTJYYC5HVdYNyKbT6s-So8SelenUKoRKuL6IXCUuyDRq9TJIadzFRxkSItc3tNWtmUmnItA
   # - icon: brands/github
   #   url: https://github.com/gcushen
   # - icon: brands/linkedin
