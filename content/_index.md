@@ -41,14 +41,7 @@ sections:
     content:
       title: Publiactions
       username: admin
-  - block: publications
-    content:
-      title: Publications
-      username: admin
-  - block: projects
-    content:
-      title: Projects
-      username: admin
+      
   # - block: languages
   #   content:
   #     title: Languages
