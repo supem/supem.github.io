@@ -38,12 +38,14 @@ profiles:
   #   url: https://www.linkedin.com/
   # - icon: brands/instagram
   #   url: https://www.instagram.com/
+  - icon: academicons/google-scholar
+    url: https://scholar.google.com.hk/citations?view_op=list_works&hl=zh-CN&user=S4HPuI4AAAAJ&gmla=AJsN-F4Rehd6Xn73IKKqbgufm7yl-QKi2v01iUh-APKBgFf58xxIHYjRQwOC8KeGgSzzENTJYYC5HVdYNyKbT6s-So8SelenUKoRKuL6IXCUuyDRq9TJIadzFRxkSItc3tNWtmUmnItA
 
 education:
   - area: Doctor of Philosophy in Computer Applied Technology
     institution: Macao Polytechnic University
-    # date_start: 2016-01-01
-    # date_end: 2020-12-31
+    date_start: 2023-09-01
+    date_end: ''
     # summary: |
     #   Thesis on _Why LLMs are awesome_. Supervised by [Prof Joe Smith](https://example.com). Presented papers at 5 IEEE conferences with the contributions being published in 2 Springer journals.
     # button:
@@ -51,8 +53,8 @@ education:
     #   url: 'https://example.com'
   - area: Master of Artificial Intelligence & Digital Media
     institution: Hong Kong Baptist University
-  #   date_start: 2016-01-01
-  #   date_end: 2020-12-31
+    date_start: 2021-09-01
+    date_end: 2023-06-30
   #   summary: |
   #     GPA: 3.8/4.0
 
@@ -62,8 +64,8 @@ education:
   #     - lorem ipsum dolor sit amet, consectetur adipiscing elit
   - area: BSc Artificial Intelligence
     institution: Sun Yat-Sen University
-    # date_start: 2016-01-01
-    # date_end: 2020-12-31
+    date_start: 2014-09-01
+    date_end: 2018-06-30
     # summary: |
     #   GPA: 3.4/4.0
       
@@ -76,8 +78,8 @@ work:
     company_name: Guangzhou Yaoshibang
     # company_url: ''
     # company_logo: ''
-    # date_start: 2021-01-01
-    # date_end: ''
+    date_start: 2020-02-01
+    date_end: ''
     # summary: |2-
     #   Responsibilities include:
     #   - lorem ipsum dolor sit amet, consectetur adipiscing elit
@@ -87,8 +89,8 @@ work:
     company_name: China Telecom
     # company_url: ''
     # company_logo: ''
-    # date_start: 2016-01-01
-    # date_end: 2020-12-31
+    date_start: 2018-07-15
+    date_end: 2019-06-01
     # summary: |
     #   Responsibilities include:
     #   - Migrated infrastructure to a new data center
@@ -104,7 +106,7 @@ skills:
         description: ''
         percent: 80
         # icon: devicon/python
-      - name: Software Engineer
+      - name: Software Engineering
         description: ''
         percent: 70
         # icon: devicon/rstudio
@@ -137,36 +139,45 @@ skills:
 #   - name: Portuguese
 #     percent: 0
 
-# Awards.
-#   Add/remove as many awards below as you like.
-#   Only `title`, `awarder`, and `date` are required.
-#   Begin multi-line `summary` with YAML's `|` or `|2-` multi-line prefix and indent 2 spaces below.
-awards:
-  - title: Neural Networks and Deep Learning
-    url: https://www.coursera.org/learn/neural-networks-deep-learning
-    date: '2023-11-25'
-    awarder: Coursera
-    icon: coursera
-    summary: |
-      I studied the foundational concept of neural networks and deep learning. By the end, I was familiar with the significant technological trends driving the rise of deep learning; build, train, and apply fully connected deep neural networks; implement efficient (vectorized) neural networks; identify key parameters in a neural network’s architecture; and apply deep learning to your own applications.
-  - title: Blockchain Fundamentals
-    url: https://www.edx.org/professional-certificate/uc-berkeleyx-blockchain-fundamentals
-    date: '2023-07-01'
-    awarder: edX
-    icon: edx
-    summary: |
-      Learned:
-      - Synthesize your own blockchain solutions
-      - Gain an in-depth understanding of the specific mechanics of Bitcoin
-      - Understand Bitcoin’s real-life applications and learn how to attack and destroy Bitcoin, Ethereum, smart contracts and Dapps, and alternatives to Bitcoin’s Proof-of-Work consensus algorithm
-  - title: 'Object-Oriented Programming in R'
-    url: https://www.datacamp.com/courses/object-oriented-programming-with-s3-and-r6-in-r
-    certificate_url: https://www.datacamp.com
-    date: '2023-01-21'
-    awarder: datacamp
-    icon: datacamp
-    summary: |
-      Object-oriented programming (OOP) lets you specify relationships between functions and the objects that they can act on, helping you manage complexity in your code. This is an intermediate level course, providing an introduction to OOP, using the S3 and R6 systems. S3 is a great day-to-day R programming tool that simplifies some of the functions that you write. R6 is especially useful for industry-specific analyses, working with web APIs, and building GUIs.
+# Publications
+publications:
+  - title: "Deep Learning for Image Classification"
+    publication: "Journal of Artificial Intelligence Research"
+    date: "2023-05-15"
+    url: "https://example.com/deep-learning-image-classification"
+    description: |
+      This paper presents a novel approach to image classification using deep learning techniques. Our method outperforms traditional methods on several benchmark datasets.
+  - title: "Blockchain and Distributed Ledger Technology"
+    publication: "IEEE Transactions on Computers"
+    date: "2022-08-30"
+    url: "https://example.com/blockchain-distributed-ledger"
+    description: |
+      This study explores the underlying principles of blockchain technology and its applications in various industries. The paper also discusses potential security challenges and solutions.
+  - title: "Natural Language Processing with Python"
+    publication: "Proceedings of the 2021 Conference on Empirical Methods in Natural Language Processing"
+    date: "2021-11-20"
+    url: "https://example.com/nlp-python"
+    description: |
+      In this paper, we introduce a new framework for natural language processing tasks using Python. Our experiments show significant improvements in performance over existing models.
+
+# Projects
+projects:
+  - title: "Kidney Stone Online Detection System"
+    date: "2023-03-01"
+    description: |
+      Developed an intelligent healthcare system that leverages machine learning algorithms to predict and monitor patient health conditions. The system is designed to assist healthcare professionals in decision-making processes.
+    url: "https://github.com/yourusername/smart-healthcare-system"
+  - title: "Autonomous Driving Car"
+    date: "2022-12-15"
+    description: |
+      Led a team to create an autonomous driving car prototype using computer vision and deep learning. The project involved real-time object detection, lane following, and obstacle avoidance.
+    url: "https://github.com/yourusername/autonomous-driving-car"
+  - title: "E-commerce Recommendation Engine"
+    date: "2022-06-01"
+    description: |
+      Built a recommendation engine for an e-commerce platform that personalizes product suggestions for users based on their browsing and purchase history. Implemented using collaborative filtering and content-based filtering techniques.
+    url: "https://github.com/yourusername/ecommerce-recommendation-engine"
+
 ---
 
 I am currently Director of Cloud Infrastructure at GenCoin where I am leading teams on edge computing, deep sea data center architecture, and hivemind optimization.
