@@ -38,8 +38,7 @@ profiles:
   #   url: https://www.linkedin.com/
   # - icon: brands/instagram
   #   url: https://www.instagram.com/
-  - icon: academicons/google-scholar
-    url: https://scholar.google.com.hk/citations?view_op=list_works&hl=zh-CN&user=S4HPuI4AAAAJ&gmla=AJsN-F4Rehd6Xn73IKKqbgufm7yl-QKi2v01iUh-APKBgFf58xxIHYjRQwOC8KeGgSzzENTJYYC5HVdYNyKbT6s-So8SelenUKoRKuL6IXCUuyDRq9TJIadzFRxkSItc3tNWtmUmnItA
+  
 
 education:
   - area: Doctor of Philosophy in Computer Applied Technology
@@ -141,10 +140,9 @@ skills:
 
 awards:
   - title: ''
-    url: https://scholar.google.com.hk/citations?view_op=list_works&hl=zh-CN&user=S4HPuI4AAAAJ&gmla=AJsN-F4Rehd6Xn73IKKqbgufm7yl-QKi2v01iUh-APKBgFf58xxIHYjRQwOC8KeGgSzzENTJYYC5HVdYNyKbT6s-So8SelenUKoRKuL6IXCUuyDRq9TJIadzFRxkSItc3tNWtmUmnItA
-    date: ''
     summary: |
       Please visit the Google Scholar website
+    url: https://scholar.google.com.hk/citations?view_op=list_works&hl=zh-CN&user=S4HPuI4AAAAJ&gmla=AJsN-F4Rehd6Xn73IKKqbgufm7yl-QKi2v01iUh-APKBgFf58xxIHYjRQwOC8KeGgSzzENTJYYC5HVdYNyKbT6s-So8SelenUKoRKuL6IXCUuyDRq9TJIadzFRxkSItc3tNWtmUmnItA
   
 
 ---
