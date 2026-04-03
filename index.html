@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta ch([docs.github.com](https://docs.github.com/pages/quickstart?utm_source=chatgpt.com))dth=device-width, initial-scale=1.0" />
+  <title>毛超 | Academic Homepage</title>
+  <meta name="description" content="毛超的个人学术主页，研究方向包括脑机接口、医学人工智能、生物医学信号处理与自然语言处理。" />
+  <style>
+    :root {
+      --bg: #f6f8fb;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --line: #e5e7eb;
+      --accent: #2563eb;
+      --accent-soft: #dbeafe;
+      --shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+      --max: 1080px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      background: linear-gradient(180deg, #eff6ff 0%, var(--bg) 240px);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    a:hover { text-decoration: underline; }
+
+    .container {
+      width: min(calc(100% - 32px), var(--max));
+      margin: 0 auto;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(12px);
+      background: rgba(246, 248, 251, 0.78);
+      border-bottom: 1px solid rgba(229, 231, 235, 0.8);
+    }
+
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 0;
+      gap: 16px;
+    }
+
+    .brand {
+      font-weight: 800;
+      letter-spacing: 0.4px;
+      color: #111827;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      font-size: 14px;
+    }
+
+    .hero {
+      padding: 72px 0 36px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.35fr 0.95fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-main {
+      padding: 36px;
+    }
+
+    .hero-main h1 {
+      margin: 0 0 10px;
+      font-size: clamp(34px, 5vw, 52px);
+      line-height: 1.12;
+    }
+
+    .hero-main .subtitle {
+      margin: 0 0 18px;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 20px 0 24px;
+    }
+
+    .tag {
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: #1d4ed8;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 8px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 18px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: white;
+      color: var(--text);
+      font-weight: 600;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .btn.primary {
+      background: var(--accent);
+      color: white;
+      border-color: var(--accent);
+    }
+
+    .btn:hover {
+      text-decoration: none;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 18px rgba(37, 99, 235, 0.16);
+    }
+
+    .hero-side {
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 14px;
+    }
+
+    .info-item {
+      padding: 12px 0;
+      border-bottom: 1px dashed var(--line);
+    }
+    .info-item:last-child { border-bottom: none; }
+
+    .info-label {
+      display: block;
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+
+    section {
+      padding: 14px 0 6px;
+    }
+
+    .section-card {
+      padding: 30px;
+      margin: 18px 0;
+    }
+
+    h2 {
+      margin: 0 0 18px;
+      font-size: 26px;
+    }
+
+    h3 {
+      margin: 0 0 8px;
+      font-size: 19px;
+    }
+
+    .lead {
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 16px;
+    }
+
+    .timeline-item {
+      padding-left: 18px;
+      border-left: 3px solid var(--accent-soft);
+    }
+
+    .meta {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
+
+    ul.clean {
+      margin: 10px 0 0 18px;
+      padding: 0;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .pub-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .pub-item {
+      padding: 16px 18px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: #fcfdff;
+    }
+
+    .pub-item .journal {
+      color: var(--muted);
+      font-size: 14px;
+      margin-top: 6px;
+    }
+
+    .skill-group {
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: #fcfdff;
+    }
+
+    .footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 14px;
+      padding: 26px 0 48px;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid,
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 40px;
+      }
+
+      .hero-main,
+      .hero-side,
+      .section-card {
+        padding: 22px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <div class="brand">毛超 · Academic Homepage</div>
+      <div class="nav-links">
+        <a href="#about">简介</a>
+        <a href="#education">教育背景</a>
+        <a href="#publications">论文发表</a>
+        <a href="#projects">研究项目</a>
+        <a href="#experience">工作经历</a>
+        <a href="#skills">技能</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero container">
+    <div class="hero-grid">
+      <div class="card hero-main">
+        <p style="margin:0 0 12px;color:#2563eb;font-weight:700;letter-spacing:0.6px;">PERSONAL WEBSITE</p>
+        <h1>毛超</h1>
+        <p class="subtitle">PhD Student · Brain-Computer Interface · Medical AI · Biomedical Signal Processing · NLP</p>
+        <p>
+          我目前就读于华南理工大学电子信息专业，研究兴趣聚焦于脑机接口、医学人工智能、生物医学信号处理与自然语言处理，
+          关注将机器学习与临床实际问题相结合，构建可解释、可落地的智能医疗方法。
+        </p>
+        <div class="tag-row">
+          <span class="tag">Brain-Computer Interface</span>
+          <span class="tag">Medical AI</span>
+          <span class="tag">Biomedical Signal Processing</span>
+          <span class="tag">Natural Language Processing</span>
+        </div>
+        <div class="actions">
+          <a class="btn primary" href="mailto:maoch3@foxmail.com">Email Me</a>
+          <a class="btn" href="https://scholar.google.com.hk/citations?user=S4HPuI4AAAAJ&amp;hl=zh-CN" target="_blank" rel="noopener noreferrer">Google Scholar</a>
+        </div>
+      </div>
+
+      <aside class="card hero-side">
+        <div class="info-item">
+          <span class="info-label">Phone</span>
+          <span>+86 199 xxxx 0305</span>
+        </div>
+        <div class="info-item">
+          <span class="info-label">Email</span>
+          <a href="mailto:maoch3@foxmail.com">maoch3@foxmail.com</a>
+        </div>
+        <div class="info-item">
+          <span class="info-label">Current Institution</span>
+          <span>South China University of Technology</span>
+        </div>
+        <div class="info-item">
+          <span class="info-label">Current Program</span>
+          <span>PhD in Electronic Information</span>
+        </div>
+        <div class="info-item">
+          <span class="info-label">Research Focus</span>
+          <span>EEG / BCI / Medical AI / NLP</span>
+        </div>
+      </aside>
+    </div>
+  </header>
+
+  <main class="container">
+    <section id="about">
+      <div class="card section-card">
+        <h2>简介</h2>
+        <p class="lead">
+          我拥有人工智能、软件工程与产品设计的复合背景，曾在产业界担任产品经理，随后转向人工智能与医学数据智能分析研究。
+          目前主要从事脑电、心电、生物医学文本与多模态医疗数据相关研究，尤其关注临床辅助决策、疾病风险识别与智能筛查系统。
+        </p>
+      </div>
+    </section>
+
+    <section id="education">
+      <div class="card section-card">
+        <h2>教育背景</h2>
+        <div class="timeline">
+          <div class="timeline-item">
+            <h3>华南理工大学 (SCUT) · 博士</h3>
+            <div class="meta">2025.09 – 2029.06 · 电子信息</div>
+            <div>研究方向：脑机接口、自然语言处理、模式识别</div>
+          </div>
+          <div class="timeline-item">
+            <h3>香港浸会大学 (HKBU) · 硕士</h3>
+            <div class="meta">2021.09 – 2023.06 · 人工智能与数码媒体</div>
+            <div>研究方向：机器学习、推荐系统、数据分析与可视化、数字媒体人工智能</div>
+          </div>
+          <div class="timeline-item">
+            <h3>中山大学 (SYSU) · 本科</h3>
+            <div class="meta">2014.09 – 2018.06 · 软件工程</div>
+            <div>主要课程与训练：程序设计、数据结构与算法、数据库、Web、数字信号处理</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="publications">
+      <div class="card section-card">
+        <h2>论文发表与学术成果</h2>
+        <div class="pub-list">
+          <div class="pub-item">
+            <strong>Multimodal ECG and biometric data fusion for improved detection of obstructive sleep apnea hypopnea syndrome</strong>
+            <div class="journal">Frontiers in Medicine · SCI Q1 · Corresponding Author</div>
+          </div>
+          <div class="pub-item">
+            <strong>Exploring the Potential of an Online Kidney Stone Detection System: A Mixed Methods Study in Patients and Healthy Individuals</strong>
+            <div class="journal">Journal of Medical Internet Research · First Author</div>
+          </div>
+          <div class="pub-item">
+            <strong>Identifying kidney stone risk factors through patient experiences with a large language model: text analysis and empirical study</strong>
+            <div class="journal">Journal of Medical Internet Research · SCI Q1 · First Author</div>
+          </div>
+          <div class="pub-item">
+            <strong>Automatic kidney stone identification: an adaptive feature-weighted LSTM model based on urine and blood routine analysis</strong>
+            <div class="journal">Urolithiasis · SCI Q2 · Corresponding Author</div>
+          </div>
+          <div class="pub-item">
+            <strong>Revealing Patient Dissatisfaction With Health Care Resource Allocation in Multiple Dimensions Using Large Language Models and the International Classification of Diseases 11th Revision: Aspect-Based Sentiment Analysis</strong>
+            <div class="journal">Journal of Medical Internet Research · SCI Q1 · Participate</div>
+          </div>
+          <div class="pub-item">
+            <strong>Medical Department Classification Based on Patient Describing Symptoms</strong>
+            <div class="journal">BMC Medical Informatics and Decision Making · SCI Q2 · First Author</div>
+          </div>
+          <div class="pub-item">
+            <strong>A hybrid system for natural language processing</strong>
+            <div class="journal">China Invention Patent · 202210743596.9</div>
+          </div>
+          <div class="pub-item">
+            <strong>Big data visualization monitoring information platform</strong>
+            <div class="journal">Software Copyright · 2022SR0363502</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="card section-card">
+        <h2>研究项目</h2>
+        <div class="timeline">
+          <div class="timeline-item">
+            <h3>社交媒体中的疾病风险因素识别</h3>
+            <div class="meta">2024.03 – 2024.09</div>
+            <ul class="clean">
+              <li>爬取并清洗社交媒体数据，结合专业医生标注构建高质量医学文本数据集。</li>
+              <li>以 GPT-4 为基底模型，引入 least-to-most prompting 以及医生总结的医学规律，实现疾病风险因素识别。</li>
+            </ul>
+          </div>
+          <div class="timeline-item">
+            <h3>基于血尿常规分析的自适应特征加权模型自动识别肾结石</h3>
+            <div class="meta">2024.01 – 2024.05</div>
+            <ul class="clean">
+              <li>与医院合作获取数据，并完成需求导向的数据筛选与预处理。</li>
+              <li>设计基于 LSTM 的自适应特征加权模型，用于肾结石早期识别，并与多种模型进行对比验证。</li>
+            </ul>
+          </div>
+          <div class="timeline-item">
+            <h3>基于 ECG 信号自动识别阻塞性睡眠呼吸暂停（OSAHS）</h3>
+            <div class="meta">2023.07 – 2024.03</div>
+            <ul class="clean">
+              <li>提出多模态特征融合方案，将 ECG 特征与生物特征数据联合建模。</li>
+              <li>通过全连接分类网络进行 OSAHS 检测，并在两个独立数据库上验证模型性能与泛化能力。</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="card section-card">
+        <h2>工作经历</h2>
+        <div class="timeline">
+          <div class="timeline-item">
+            <h3>广州药师帮 · 产品经理</h3>
+            <div class="meta">2020.03 – 2021.06</div>
+            <div>负责搭建用户网上购药互联网平台，提升普通用户的在线咨询与购药体验。</div>
+          </div>
+          <div class="timeline-item">
+            <h3>中国电信 · 产品经理</h3>
+            <div class="meta">2018.06 – 2020.01</div>
+            <div>负责用户研究、需求分析、功能设计等产品相关工作，参与产品方案落地实施。</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="grid-2">
+        <div class="card section-card">
+          <h2>荣誉与科研服务</h2>
+          <ul class="clean">
+            <li>研究生二等奖学金，2022</li>
+            <li>中山大学优秀共青团员，2015</li>
+            <li>中山大学优秀勤工助学助理，2015</li>
+          </ul>
+          <p style="margin-top:18px;"><strong>期刊审稿人：</strong></p>
+          <ul class="clean">
+            <li>Journal of Neuropsychological Rehabilitation</li>
+            <li>International Wound Journal</li>
+            <li>Engineering Applications of Artificial Intelligence</li>
+          </ul>
+        </div>
+
+        <div id="skills" class="card section-card">
+          <h2>技能与爱好</h2>
+          <div class="skill-group">
+            <h3>技能</h3>
+            <p>Python · PyTorch · Django · MySQL · 数据分析 · 项目管理</p>
+          </div>
+          <div style="height:14px"></div>
+          <div class="skill-group">
+            <h3>爱好</h3>
+            <p>阅读</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="container footer">
+    <div>© 2026 毛超 · Personal Academic Homepage</div>
+  </footer>
+</body>
+</html>
