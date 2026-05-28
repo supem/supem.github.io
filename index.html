@@ -6,21 +6,496 @@
   <title>Chao Mao | Academic Homepage</title>
   <meta name="description" content="Chao Mao's academic homepage, focusing on brain-computer interface, biomedical signal processing, NLP, and digital health." />
   <style>
-    :root{--bg:#f7f8fb;--paper:#fff;--text:#1f2937;--muted:#6b7280;--line:#e5e7eb;--accent:#2563eb;--accent-dark:#1e40af;--accent-soft:#eff6ff;--gold-soft:#fff7ed;--purple-soft:#f5f3ff;--green-soft:#ecfdf5;--radius:18px;--max:1180px}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--text);background:radial-gradient(circle at top left,rgba(37,99,235,.08),transparent 30%),linear-gradient(180deg,#fff 0%,var(--bg) 320px);line-height:1.68}a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}.topbar{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.86);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}.topbar-inner{width:min(calc(100% - 32px),var(--max));margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:18px;min-height:64px}.brand{font-size:18px;font-weight:800;letter-spacing:-.02em;color:#111827}.brand a{color:inherit;text-decoration:none}.nav{display:flex;flex-wrap:wrap;gap:20px;font-size:14px}.nav a{color:#374151;font-weight:600}.layout{width:min(calc(100% - 32px),var(--max));margin:34px auto 56px;display:grid;grid-template-columns:320px minmax(0,1fr);gap:30px;align-items:start}.sidebar{position:sticky;top:86px;background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:28px;box-shadow:0 18px 45px rgba(15,23,42,.06)}.avatar{width:112px;height:112px;border-radius:50%;display:grid;place-items:center;margin-bottom:20px;color:#fff;font-size:34px;font-weight:800;letter-spacing:-.04em;background:linear-gradient(135deg,#2563eb,#7c3aed);box-shadow:0 18px 36px rgba(37,99,235,.20)}.sidebar h1{margin:0 0 6px;font-size:30px;line-height:1.1;letter-spacing:-.04em}.role{margin:0 0 18px;color:#374151;font-size:15px;line-height:1.55}.affiliation{padding:14px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);color:var(--muted);font-size:14px}.link-list{display:grid;gap:10px;margin-top:18px}.link-list a{display:flex;align-items:center;justify-content:space-between;padding:9px 12px;border:1px solid var(--line);border-radius:12px;color:#111827;background:#fff;font-size:14px;font-weight:650}.link-list a:hover{text-decoration:none;border-color:rgba(37,99,235,.35);background:var(--accent-soft)}.content{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 18px 45px rgba(15,23,42,.05);overflow:hidden}section{padding:30px 34px;border-bottom:1px solid var(--line)}section:last-child{border-bottom:none}h2{margin:0 0 16px;font-size:24px;line-height:1.2;letter-spacing:-.03em;color:#111827}h2::after{content:"";display:block;width:42px;height:3px;margin-top:10px;border-radius:999px;background:linear-gradient(90deg,var(--accent),#7c3aed)}.about-text{margin:0;color:#374151;font-size:16px;text-align:justify;text-justify:inter-word}.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}.chip{padding:7px 11px;border-radius:999px;background:var(--accent-soft);border:1px solid rgba(37,99,235,.13);color:var(--accent-dark);font-size:13px;font-weight:700}.news-list,.simple-list{margin:0;padding-left:20px}.news-list li,.simple-list li{margin:8px 0}.date{color:var(--muted);font-weight:700}.timeline{display:grid;gap:16px}.timeline-item{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px;padding:0 0 16px 18px;border-left:3px solid rgba(37,99,235,.28)}.timeline-item:last-child{padding-bottom:0}.timeline-title{margin:0;font-size:17px;font-weight:750;color:#111827}.timeline-meta{margin-top:4px;color:var(--muted);font-size:14px}.timeline-date{color:var(--muted);font-size:14px;white-space:nowrap;text-align:right}.publication-list{display:grid;gap:18px}.publication{display:grid;grid-template-columns:54px minmax(0,1fr);gap:16px;padding-bottom:18px;border-bottom:1px dashed #d1d5db}.publication:last-child{border-bottom:none;padding-bottom:0}.pub-index{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;color:var(--accent-dark);background:var(--accent-soft);border:1px solid rgba(37,99,235,.14);font-weight:800;font-size:14px}.pub-title{margin:0 0 6px;color:#111827;font-size:15.8px;line-height:1.55}.pub-venue{color:#4b5563;font-size:14px}.pub-tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:10px}.tag{padding:4px 9px;border-radius:999px;font-size:12px;font-weight:750;border:1px solid transparent}.tag.sci{color:#065f46;background:var(--green-soft);border-color:rgba(5,150,105,.12)}.tag.q{color:#92400e;background:var(--gold-soft);border-color:rgba(245,158,11,.16)}.tag.role{color:#5b21b6;background:var(--purple-soft);border-color:rgba(124,58,237,.14)}footer{width:min(calc(100% - 32px),var(--max));margin:-30px auto 42px;color:var(--muted);font-size:14px;text-align:center}@media(max-width:900px){.topbar-inner{align-items:flex-start;flex-direction:column;padding:14px 0}.layout{grid-template-columns:1fr;margin-top:22px}.sidebar{position:static}section{padding:24px 22px}.timeline-item{grid-template-columns:1fr;gap:4px}.timeline-date{text-align:left}.publication{grid-template-columns:1fr;gap:8px}}
+    :root {
+      --bg: #f7f8fb;
+      --paper: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --line: #e5e7eb;
+      --accent: #2563eb;
+      --accent-dark: #1e40af;
+      --accent-soft: #eff6ff;
+      --gold-soft: #fff7ed;
+      --purple-soft: #f5f3ff;
+      --green-soft: #ecfdf5;
+      --radius: 18px;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(37, 99, 235, 0.08), transparent 30%),
+        linear-gradient(180deg, #ffffff 0%, var(--bg) 320px);
+      line-height: 1.68;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(255, 255, 255, 0.86);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .topbar-inner {
+      width: min(calc(100% - 32px), var(--max));
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      min-height: 64px;
+    }
+
+    .brand {
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: #111827;
+    }
+
+    .brand a { color: inherit; text-decoration: none; }
+
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      font-size: 14px;
+    }
+
+    .nav a { color: #374151; font-weight: 600; }
+
+    .layout {
+      width: min(calc(100% - 32px), var(--max));
+      margin: 34px auto 56px;
+      display: grid;
+      grid-template-columns: 320px minmax(0, 1fr);
+      gap: 30px;
+      align-items: start;
+    }
+
+    .sidebar {
+      position: sticky;
+      top: 86px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: 0 18px 45px rgba(15, 23, 42, 0.06);
+    }
+
+    .avatar {
+      width: 112px;
+      height: 112px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      margin-bottom: 20px;
+      color: #ffffff;
+      font-size: 34px;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      background: linear-gradient(135deg, #2563eb, #7c3aed);
+      box-shadow: 0 18px 36px rgba(37, 99, 235, 0.20);
+    }
+
+    .sidebar h1 {
+      margin: 0 0 6px;
+      font-size: 30px;
+      line-height: 1.1;
+      letter-spacing: -0.04em;
+    }
+
+    .role {
+      margin: 0 0 18px;
+      color: #374151;
+      font-size: 15px;
+      line-height: 1.55;
+    }
+
+    .affiliation {
+      padding: 14px 0;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .link-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .link-list a {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 9px 12px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      color: #111827;
+      background: #ffffff;
+      font-size: 14px;
+      font-weight: 650;
+    }
+
+    .link-list a:hover {
+      text-decoration: none;
+      border-color: rgba(37, 99, 235, 0.35);
+      background: var(--accent-soft);
+    }
+
+    .content {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: 0 18px 45px rgba(15, 23, 42, 0.05);
+      overflow: hidden;
+    }
+
+    section {
+      padding: 30px 34px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    section:last-child { border-bottom: none; }
+
+    h2 {
+      margin: 0 0 16px;
+      font-size: 24px;
+      line-height: 1.2;
+      letter-spacing: -0.03em;
+      color: #111827;
+    }
+
+    h2::after {
+      content: "";
+      display: block;
+      width: 42px;
+      height: 3px;
+      margin-top: 10px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--accent), #7c3aed);
+    }
+
+    .about-text {
+      margin: 0;
+      color: #374151;
+      font-size: 16px;
+      text-align: justify;
+      text-justify: inter-word;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .chip {
+      padding: 7px 11px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      border: 1px solid rgba(37, 99, 235, 0.13);
+      color: var(--accent-dark);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .simple-list {
+      margin: 0;
+      padding-left: 20px;
+    }
+
+    .simple-list li { margin: 8px 0; }
+
+    .timeline { display: grid; gap: 16px; }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 20px;
+      padding: 0 0 16px 18px;
+      border-left: 3px solid rgba(37, 99, 235, 0.28);
+    }
+
+    .timeline-item:last-child { padding-bottom: 0; }
+
+    .timeline-title {
+      margin: 0;
+      font-size: 17px;
+      font-weight: 750;
+      color: #111827;
+    }
+
+    .timeline-meta {
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .timeline-date {
+      color: var(--muted);
+      font-size: 14px;
+      white-space: nowrap;
+      text-align: right;
+    }
+
+    .publication-list { display: grid; gap: 18px; }
+
+    .publication {
+      display: grid;
+      grid-template-columns: 54px minmax(0, 1fr);
+      gap: 16px;
+      padding-bottom: 18px;
+      border-bottom: 1px dashed #d1d5db;
+    }
+
+    .publication:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .pub-index {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      color: var(--accent-dark);
+      background: var(--accent-soft);
+      border: 1px solid rgba(37, 99, 235, 0.14);
+      font-weight: 800;
+      font-size: 14px;
+    }
+
+    .pub-title {
+      margin: 0 0 6px;
+      color: #111827;
+      font-size: 15.8px;
+      line-height: 1.55;
+    }
+
+    .pub-venue {
+      color: #4b5563;
+      font-size: 14px;
+    }
+
+    .pub-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-top: 10px;
+    }
+
+    .tag {
+      padding: 4px 9px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 750;
+      border: 1px solid transparent;
+    }
+
+    .tag.sci { color: #065f46; background: var(--green-soft); border-color: rgba(5, 150, 105, 0.12); }
+    .tag.q { color: #92400e; background: var(--gold-soft); border-color: rgba(245, 158, 11, 0.16); }
+    .tag.role { color: #5b21b6; background: var(--purple-soft); border-color: rgba(124, 58, 237, 0.14); }
+
+    footer {
+      width: min(calc(100% - 32px), var(--max));
+      margin: -30px auto 42px;
+      color: var(--muted);
+      font-size: 14px;
+      text-align: center;
+    }
+
+    @media (max-width: 900px) {
+      .topbar-inner { align-items: flex-start; flex-direction: column; padding: 14px 0; }
+      .layout { grid-template-columns: 1fr; margin-top: 22px; }
+      .sidebar { position: static; }
+      section { padding: 24px 22px; }
+      .timeline-item { grid-template-columns: 1fr; gap: 4px; }
+      .timeline-date { text-align: left; }
+      .publication { grid-template-columns: 1fr; gap: 8px; }
+    }
   </style>
 </head>
 <body id="top">
-<header class="topbar"><div class="topbar-inner"><div class="brand"><a href="#top">Chao Mao</a></div><nav class="nav"><a href="#about">About</a><a href="#news">News</a><a href="#education">Education</a><a href="#publications">Publications</a><a href="#experience">Experience</a><a href="#service">Service</a></nav></div></header>
-<main class="layout"><aside class="sidebar"><div class="avatar">CM</div><h1>Chao Mao</h1><p class="role">South China University of Technology</p><div class="affiliation">Ph.D. Student in Electronic Information</div><div class="link-list"><a href="mailto:maoch3@foxmail.com">Email <span>↗</span></a><a href="https://scholar.google.com.hk/citations?user=S4HPuI4AAAAJ&amp;hl=zh-CN" target="_blank" rel="noopener noreferrer">Google Scholar <span>↗</span></a><a href="https://github.com/supem" target="_blank" rel="noopener noreferrer">GitHub <span>↗</span></a><a href="https://orcid.org/0009-0008-0319-4687" target="_blank" rel="noopener noreferrer">ORCID <span>↗</span></a></div></aside>
-<div class="content"><section id="about"><h2>About Me</h2><p class="about-text">I am a Ph.D. student in Electronic Information Engineering at South China University of Technology. My research focuses on brain-computer interface, biomedical signal processing, NLP, and digital health, with an emphasis on building interpretable and practical intelligent systems for healthcare applications.</p><div class="chips"><span class="chip">Brain-Computer Interface</span><span class="chip">Biomedical Signal Processing</span><span class="chip">NLP</span><span class="chip">Digital Health</span></div></section>
-<section id="news"><h2>News</h2><ul class="news-list"><li><span class="date">2026</span>: A paper on multimodal ECG and biometric data fusion for OSAHS detection was published in <em>Frontiers in Medicine</em>.</li><li><span class="date">2026</span>: A mixed-methods study on an online kidney stone detection system was published in <em>Journal of Consumer Health on the Internet</em>.</li><li><span class="date">2025</span>: Two studies using large language models for digital health and patient-generated health text were published in <em>Journal of Medical Internet Research</em>.</li></ul></section>
-<section id="education"><h2>Education</h2><div class="timeline"><div class="timeline-item"><div><p class="timeline-title">South China University of Technology (SCUT) · Ph.D.</p><div class="timeline-meta">Electronic Information Engineering</div></div><div class="timeline-date">2025.09 – 2029.06</div></div><div class="timeline-item"><div><p class="timeline-title">Hong Kong Baptist University (HKBU) · M.Sc.</p><div class="timeline-meta">Artificial Intelligence and Digital Media</div></div><div class="timeline-date">2021.09 – 2023.06</div></div><div class="timeline-item"><div><p class="timeline-title">Sun Yat-sen University (SYSU) · B.Eng.</p><div class="timeline-meta">Software Engineering</div></div><div class="timeline-date">2014.09 – 2018.06</div></div></div></section>
-<section id="publications"><h2>Selected Publications</h2><div class="publication-list">
-<article class="publication"><div class="pub-index">2026</div><div><p class="pub-title">Zhu, Q., Liang, M., Gong, X., He, Y., &amp; <strong>Mao, C.</strong> (2026). Multimodal ECG and biometric data fusion for improved detection of obstructive sleep apnea hypopnea syndrome.</p><div class="pub-venue"><em>Frontiers in Medicine</em>, <em>13</em>, 1762868.</div><div class="pub-tags"><span class="tag sci">SCI</span><span class="tag q">Q1</span><span class="tag role">Corresponding Author</span></div></div></article>
-<article class="publication"><div class="pub-index">2026</div><div><p class="pub-title"><strong>Mao, C.</strong>, Chen, R., &amp; Zhu, Q. (2026). Exploring the potential of an online kidney stone detection system: A mixed methods study in patients and healthy individuals.</p><div class="pub-venue"><em>Journal of Consumer Health on the Internet</em>, 1–16.</div><div class="pub-tags"><span class="tag role">First Author</span></div></div></article>
-<article class="publication"><div class="pub-index">2025</div><div><p class="pub-title">Guo, J., Chong, C. F., Abreu, P. H., <strong>Mao, C.</strong>, Li, J., Lam, C.-T., &amp; Ng, B. K. (2025). Reparameterization convolutional neural networks for handling imbalanced datasets in solar panel fault classification.</p><div class="pub-venue"><em>Engineering Applications of Artificial Intelligence</em>, <em>150</em>, 110541.</div><div class="pub-tags"><span class="tag sci">SCI</span><span class="tag q">Q1</span><span class="tag role">Participating Author</span></div></div></article>
-<article class="publication"><div class="pub-index">2025</div><div><p class="pub-title"><strong>Mao, C.</strong>, Li, J., Pang, P. C.-I., Zhu, Q., &amp; Chen, R. (2025). Identifying kidney stone risk factors through patient experiences with a large language model: text analysis and empirical study.</p><div class="pub-venue"><em>Journal of Medical Internet Research</em>, <em>27</em>, e66365.</div><div class="pub-tags"><span class="tag sci">SCI</span><span class="tag q">Q1</span><span class="tag role">First Author</span></div></div></article>
-<article class="publication"><div class="pub-index">2025</div><div><p class="pub-title">Li, J., Yang, Y., <strong>Mao, C.</strong>, Pang, P. C.-I., Zhu, Q., Xu, D., &amp; Wang, Y. (2025). Revealing patient dissatisfaction with health care resource allocation in multiple dimensions using large language models and the International Classification of Diseases 11th Revision: aspect-based sentiment analysis.</p><div class="pub-venue"><em>Journal of Medical Internet Research</em>, <em>27</em>, e66344.</div><div class="pub-tags"><span class="tag sci">SCI</span><span class="tag q">Q1</span><span class="tag role">Participating Author</span></div></div></article>
-<article class="publication"><div class="pub-index">2024</div><div><p class="pub-title">Zhu, Q., Pang, P. C.-I., Chen, C., Zheng, Q., Zhang, C., Li, J., Guo, J., <strong>Mao, C.</strong>, &amp; He, Y. (2024). Automatic kidney stone identification: an adaptive feature-weighted LSTM model based on urine and blood routine analysis.</p><div class="pub-venue"><em>Urolithiasis</em>, <em>52</em>(1), 145.</div><div class="pub-tags"><span class="tag sci">SCI</span><span class="tag q">Q2</span><span class="tag role">Corresponding Author</span></div></div></article>
-<article class="publication"><div class="pub-index">2023</div><div><p class="pub-title"><strong>Mao, C.</strong>, Zhu, Q., Chen, R., &amp; Su, W. (2023). Automatic medical specialty classification based on patients’ description of their symptoms.</p><div class="pub-venue"><em>BMC Medical Informatics and Decision Making</em>, <em>23</em>(1), 1–9.</div><div class="pub-tags"><span class="tag sci">SCI</span><span class="tag q">Q2</span><span class="tag role">First Author</span></div></div></article>
-</div></section><section id="experience"><h2>Experience</h2><div class="timeline"><div class="timeline-item"><div><p class="timeline-title">Guangzhou Yaoshibang · Product Manager</p></div><div class="timeline-date">2020.03 – 2021.06</div></div><div class="timeline-item"><div><p class="timeline-title">China Telecom · Product Manager</p></div><div class="timeline-date">2018.06 – 2020.01</div></div></div></section><section id="service"><h2>Academic Service</h2><ul class="simple-list"><li>Journal of Neuropsychological Rehabilitation</li><li>International Wound Journal</li><li>Engineering Applications of Artificial Intelligence</li><li>Scientific Reports</li></ul></section></div></main><footer>© 2026 Chao Mao · Personal Academic Homepage</footer></body></html>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand"><a href="#top">Chao Mao</a></div>
+      <nav class="nav">
+        <a href="#about">About</a>
+        <a href="#education">Education</a>
+        <a href="#publications">Publications</a>
+        <a href="#experience">Experience</a>
+        <a href="#service">Service</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="layout">
+    <aside class="sidebar">
+      <div class="avatar">CM</div>
+      <h1>Chao Mao</h1>
+      <p class="role">School of Automation Science and Engineering,<br />South China University of Technology (SCUT)</p>
+      <div class="affiliation">
+        Ph.D. Student in Electronic Information
+      </div>
+      <div class="link-list">
+        <a href="mailto:maoch3@foxmail.com">Email <span>↗</span></a>
+        <a href="https://scholar.google.com.hk/citations?user=S4HPuI4AAAAJ&amp;hl=zh-CN" target="_blank" rel="noopener noreferrer">Google Scholar <span>↗</span></a>
+        <a href="https://github.com/supem" target="_blank" rel="noopener noreferrer">GitHub <span>↗</span></a>
+        <a href="https://orcid.org/0009-0008-0319-4687" target="_blank" rel="noopener noreferrer">ORCID <span>↗</span></a>
+      </div>
+    </aside>
+
+    <div class="content">
+      <section id="about">
+        <h2>About Me</h2>
+        <p class="about-text">I am a Ph.D. student in Electronic Information Engineering at the School of Automation Science and Engineering, South China University of Technology (SCUT). My research focuses on brain-computer interface, biomedical signal processing, NLP, and digital health, with an emphasis on building interpretable and practical intelligent systems for healthcare applications.</p>
+        <div class="chips">
+          <span class="chip">Brain-Computer Interface</span>
+          <span class="chip">Biomedical Signal Processing</span>
+          <span class="chip">NLP</span>
+          <span class="chip">Digital Health</span>
+        </div>
+      </section>
+
+      <section id="education">
+        <h2>Education</h2>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div>
+              <p class="timeline-title">South China University of Technology (SCUT) · Ph.D.</p>
+              <div class="timeline-meta">School of Automation Science and Engineering, South China University of Technology (SCUT) · Electronic Information Engineering</div>
+            </div>
+            <div class="timeline-date">2025.09 – 2029.06</div>
+          </div>
+          <div class="timeline-item">
+            <div>
+              <p class="timeline-title">Hong Kong Baptist University (HKBU) · M.Sc.</p>
+              <div class="timeline-meta">Artificial Intelligence and Digital Media</div>
+            </div>
+            <div class="timeline-date">2021.09 – 2023.06</div>
+          </div>
+          <div class="timeline-item">
+            <div>
+              <p class="timeline-title">Sun Yat-sen University (SYSU) · B.Eng.</p>
+              <div class="timeline-meta">Software Engineering</div>
+            </div>
+            <div class="timeline-date">2014.09 – 2018.06</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="publications">
+        <h2>Selected Publications</h2>
+        <div class="publication-list">
+          <article class="publication">
+            <div class="pub-index">2026</div>
+            <div>
+              <p class="pub-title">Zhu, Q., Liang, M., Gong, X., He, Y., &amp; <strong>Mao, C.</strong> (2026). Multimodal ECG and biometric data fusion for improved detection of obstructive sleep apnea hypopnea syndrome.</p>
+              <div class="pub-venue"><em>Frontiers in Medicine</em>, <em>13</em>, 1762868.</div>
+              <div class="pub-tags"><span class="tag sci">SCI</span><span class="tag q">Q1</span><span class="tag role">Corresponding Author</span></div>
+            </div>
+          </article>
+
+          <article class="publication">
+            <div class="pub-index">2026</div>
+            <div>
+              <p class="pub-title"><strong>Mao, C.</strong>, Chen, R., &amp; Zhu, Q. (2026). Exploring the potential of an online kidney stone detection system: A mixed methods study in patients and healthy individuals.</p>
+              <div class="pub-venue"><em>Journal of Consumer Health on the Internet</em>, 1–16.</div>
+              <div class="pub-tags"><span class="tag role">First Author</span></div>
+            </div>
+          </article>
+
+          <article class="publication">
+            <div class="pub-index">2025</div>
+            <div>
+              <p class="pub-title">Guo, J., Chong, C. F., Abreu, P. H., <strong>Mao, C.</strong>, Li, J., Lam, C.-T., &amp; Ng, B. K. (2025). Reparameterization convolutional neural networks for handling imbalanced datasets in solar panel fault classification.</p>
+              <div class="pub-venue"><em>Engineering Applications of Artificial Intelligence</em>, <em>150</em>, 110541.</div>
+              <div class="pub-tags"><span class="tag sci">SCI</span><span class="tag q">Q1</span><span class="tag role">Participating Author</span></div>
+            </div>
+          </article>
+
+          <article class="publication">
+            <div class="pub-index">2025</div>
+            <div>
+              <p class="pub-title"><strong>Mao, C.</strong>, Li, J., Pang, P. C.-I., Zhu, Q., &amp; Chen, R. (2025). Identifying kidney stone risk factors through patient experiences with a large language model: text analysis and empirical study.</p>
+              <div class="pub-venue"><em>Journal of Medical Internet Research</em>, <em>27</em>, e66365.</div>
+              <div class="pub-tags"><span class="tag sci">SCI</span><span class="tag q">Q1</span><span class="tag role">First Author</span></div>
+            </div>
+          </article>
+
+          <article class="publication">
+            <div class="pub-index">2025</div>
+            <div>
+              <p class="pub-title">Li, J., Yang, Y., <strong>Mao, C.</strong>, Pang, P. C.-I., Zhu, Q., Xu, D., &amp; Wang, Y. (2025). Revealing patient dissatisfaction with health care resource allocation in multiple dimensions using large language models and the International Classification of Diseases 11th Revision: aspect-based sentiment analysis.</p>
+              <div class="pub-venue"><em>Journal of Medical Internet Research</em>, <em>27</em>, e66344.</div>
+              <div class="pub-tags"><span class="tag sci">SCI</span><span class="tag q">Q1</span><span class="tag role">Participating Author</span></div>
+            </div>
+          </article>
+
+          <article class="publication">
+            <div class="pub-index">2024</div>
+            <div>
+              <p class="pub-title">Zhu, Q., Pang, P. C.-I., Chen, C., Zheng, Q., Zhang, C., Li, J., Guo, J., <strong>Mao, C.</strong>, &amp; He, Y. (2024). Automatic kidney stone identification: an adaptive feature-weighted LSTM model based on urine and blood routine analysis.</p>
+              <div class="pub-venue"><em>Urolithiasis</em>, <em>52</em>(1), 145.</div>
+              <div class="pub-tags"><span class="tag sci">SCI</span><span class="tag q">Q2</span><span class="tag role">Corresponding Author</span></div>
+            </div>
+          </article>
+
+          <article class="publication">
+            <div class="pub-index">2023</div>
+            <div>
+              <p class="pub-title"><strong>Mao, C.</strong>, Zhu, Q., Chen, R., &amp; Su, W. (2023). Automatic medical specialty classification based on patients’ description of their symptoms.</p>
+              <div class="pub-venue"><em>BMC Medical Informatics and Decision Making</em>, <em>23</em>(1), 1–9.</div>
+              <div class="pub-tags"><span class="tag sci">SCI</span><span class="tag q">Q2</span><span class="tag role">First Author</span></div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="experience">
+        <h2>Experience</h2>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div><p class="timeline-title">Guangzhou Yaoshibang · Product Manager</p></div>
+            <div class="timeline-date">2020.03 – 2021.06</div>
+          </div>
+          <div class="timeline-item">
+            <div><p class="timeline-title">China Telecom · Product Manager</p></div>
+            <div class="timeline-date">2018.06 – 2020.01</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="service">
+        <h2>Academic Service</h2>
+        <ul class="simple-list">
+          <li>Journal of Neuropsychological Rehabilitation</li>
+          <li>International Wound Journal</li>
+          <li>Engineering Applications of Artificial Intelligence</li>
+          <li>Scientific Reports</li>
+          <li>BMC Health Services Research</li>
+          <li>Nature and Science of Sleep</li>
+          <li>Renal Failure</li>
+        </ul>
+      </section>
+    </div>
+  </main>
+
+  <footer>© 2026 Chao Mao · Personal Academic Homepage</footer>
+</body>
+</html>
