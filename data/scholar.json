@@ -1,0 +1,137 @@
+{
+  "profile_id": "S4HPuI4AAAAJ",
+  "metrics": {
+    "citations": 121,
+    "h_index": 6,
+    "i10_index": 5
+  },
+  "papers": [
+    {
+      "id": "S4HPuI4AAAAJ:yMeIxYmEMEAC",
+      "title": "Band-Specific Graph Learning for EEG-Based Emotion Recognition",
+      "authors": "C Li, C Mao, T Yu, K Liu, J Zhang, Z Gu, Z Yu",
+      "venue": "IEEE Signal Processing Letters",
+      "year": 2026,
+      "citations": 0,
+      "url": "https://scholar.google.com.hk/citations?view_op=view_citation&user=S4HPuI4AAAAJ&citation_for_view=S4HPuI4AAAAJ%3AyMeIxYmEMEAC"
+    },
+    {
+      "id": "S4HPuI4AAAAJ:Ri6SYOTghG4C",
+      "title": "Multimodal ECG and biometric data fusion for improved detection of obstructive sleep apnea hypopnea syndrome",
+      "authors": "Q Zhu, M Liang, X Gong, Y He, C Mao",
+      "venue": "Frontiers in Medicine 13, 1762868",
+      "year": 2026,
+      "citations": 2,
+      "url": "https://scholar.google.com.hk/citations?view_op=view_citation&user=S4HPuI4AAAAJ&citation_for_view=S4HPuI4AAAAJ%3ARi6SYOTghG4C"
+    },
+    {
+      "id": "S4HPuI4AAAAJ:kh2fBNsKQNwC",
+      "title": "Exploring the Potential of an Online Kidney Stone Detection System: A Mixed Methods Study in Patients and Healthy Individuals",
+      "authors": "C Mao, R Chen, Q Zhu",
+      "venue": "Journal of Consumer Health on the Internet 30 (1), 26-41",
+      "year": 2026,
+      "citations": 2,
+      "url": "https://scholar.google.com.hk/citations?view_op=view_citation&user=S4HPuI4AAAAJ&citation_for_view=S4HPuI4AAAAJ%3Akh2fBNsKQNwC"
+    },
+    {
+      "id": "S4HPuI4AAAAJ:PVjk1bu6vJQC",
+      "title": "Sleep patterns, plasma metabolites, and risk of incident osteoarthritis: a prospective cohort study",
+      "authors": "H Xia, C Meng, R Chen, C Mao, C Li, Y Xu",
+      "venue": "Scientific Reports 15 (1), 29334",
+      "year": 2025,
+      "citations": 2,
+      "url": "https://scholar.google.com.hk/citations?view_op=view_citation&user=S4HPuI4AAAAJ&citation_for_view=S4HPuI4AAAAJ%3APVjk1bu6vJQC"
+    },
+    {
+      "id": "S4HPuI4AAAAJ:M7yex6snE4oC",
+      "title": "Enhancing the robustness of solar photovoltaic fault classification based on depthwise separable group equivariant CNNs",
+      "authors": "J Guo, CF Chong, PH Abreu, C Mao, CT Lam, BK Ng",
+      "venue": "Alexandria Engineering Journal 127, 486-499",
+      "year": 2025,
+      "citations": 5,
+      "url": "https://scholar.google.com.hk/citations?view_op=view_citation&user=S4HPuI4AAAAJ&citation_for_view=S4HPuI4AAAAJ%3AM7yex6snE4oC"
+    },
+    {
+      "id": "S4HPuI4AAAAJ:k8Z6L05lTy4C",
+      "title": "Reparameterization convolutional neural networks for handling imbalanced datasets in solar panel fault classification",
+      "authors": "J Guo, CF Chong, PH Abreu, C Mao, J Li, CT Lam, BK Ng",
+      "venue": "Engineering Applications of Artificial Intelligence 150, 110541",
+      "year": 2025,
+      "citations": 18,
+      "url": "https://scholar.google.com.hk/citations?view_op=view_citation&user=S4HPuI4AAAAJ&citation_for_view=S4HPuI4AAAAJ%3Ak8Z6L05lTy4C"
+    },
+    {
+      "id": "S4HPuI4AAAAJ:oNZyr7d5Mn4C",
+      "title": "Identifying kidney stone risk factors through patient experiences with a large language model: text analysis and empirical study",
+      "authors": "C Mao, J Li, PCI Pang, Q Zhu, R Chen",
+      "venue": "Journal of Medical Internet Research 27, e66365",
+      "year": 2025,
+      "citations": 10,
+      "url": "https://scholar.google.com.hk/citations?view_op=view_citation&user=S4HPuI4AAAAJ&citation_for_view=S4HPuI4AAAAJ%3AoNZyr7d5Mn4C"
+    },
+    {
+      "id": "S4HPuI4AAAAJ:kz9GbA2Ns4gC",
+      "title": "EquArchNets: Equivariant neural networks-based approach for foot arch classification toward variations in foot orientation",
+      "authors": "J Guo, CF Chong, X Liang, C Mao, J Li, CT Lam, J Shen, BK Ng",
+      "venue": "IEEE Sensors Journal 25 (8), 14328-14341",
+      "year": 2025,
+      "citations": 1,
+      "url": "https://scholar.google.com.hk/citations?view_op=view_citation&user=S4HPuI4AAAAJ&citation_for_view=S4HPuI4AAAAJ%3Akz9GbA2Ns4gC"
+    },
+    {
+      "id": "S4HPuI4AAAAJ:VaXvl8Fpj5cC",
+      "title": "Revealing patient dissatisfaction with health care resource allocation in multiple dimensions using large language models and the international classification of diseases 11th revision: aspect-based sentiment analysis",
+      "authors": "J Li, Y Yang, C Mao, PCI Pang, Q Zhu, D Xu, Y Wang",
+      "venue": "Journal of Medical Internet Research 27, e66344",
+      "year": 2025,
+      "citations": 25,
+      "url": "https://scholar.google.com.hk/citations?view_op=view_citation&user=S4HPuI4AAAAJ&citation_for_view=S4HPuI4AAAAJ%3AVaXvl8Fpj5cC"
+    },
+    {
+      "id": "S4HPuI4AAAAJ:J-pR_7NvFogC",
+      "title": "Automatic kidney stone identification: an adaptive feature-weighted LSTM model based on urine and blood routine analysis",
+      "authors": "Quanjing Zhu, Patrick Cheong-Iao Pang, Canhui Chen, Qingyuan Zheng, Chongwei Zhang, Jiaxuan Li, Jielong Guo, Chao Mao, Yong He",
+      "venue": "Urolithiasis 52 (1), 145",
+      "year": 2024,
+      "citations": 14,
+      "url": "https://scholar.google.com.hk/citations?view_op=view_citation&user=S4HPuI4AAAAJ&citation_for_view=S4HPuI4AAAAJ%3AJ-pR_7NvFogC"
+    },
+    {
+      "id": "S4HPuI4AAAAJ:qjMakFHDy7sC",
+      "title": "Automatic medical specialty classification based on patients’ description of their symptoms",
+      "authors": "C Mao, Q Zhu, R Chen, W Su",
+      "venue": "BMC Medical Informatics and Decision Making 23 (1), 1-9",
+      "year": 2023,
+      "citations": 29,
+      "url": "https://scholar.google.com.hk/citations?view_op=view_citation&user=S4HPuI4AAAAJ&citation_for_view=S4HPuI4AAAAJ%3AqjMakFHDy7sC"
+    },
+    {
+      "id": "S4HPuI4AAAAJ:7PzlFSSx8tAC",
+      "title": "Intelligent DNA-based hydrogels for bioanalysis and therapeutics",
+      "authors": "Q Zhu, C Shen, R Chen, C Mao, Y He, K Yang",
+      "venue": "ACS Applied Polymer Materials 5 (9), 6695-6719",
+      "year": 2023,
+      "citations": 9,
+      "url": "https://scholar.google.com.hk/citations?view_op=view_citation&user=S4HPuI4AAAAJ&citation_for_view=S4HPuI4AAAAJ%3A7PzlFSSx8tAC"
+    },
+    {
+      "id": "S4HPuI4AAAAJ:dhFuZR0502QC",
+      "title": "Medical Department Classification Based on Patient Describing Symptoms",
+      "authors": "C Mao, Q Zhu, R Chen, W Su",
+      "venue": "",
+      "year": 2022,
+      "citations": 2,
+      "url": "https://scholar.google.com.hk/citations?view_op=view_citation&user=S4HPuI4AAAAJ&citation_for_view=S4HPuI4AAAAJ%3AdhFuZR0502QC"
+    },
+    {
+      "id": "S4HPuI4AAAAJ:bFI3QPDXJZMC",
+      "title": "Three-dimensional tree visualization of computer image data based on Louvain algorithm",
+      "authors": "C Mao",
+      "venue": "The International Conference on Cyber Security Intelligence and Analytics, 837-845",
+      "year": 2022,
+      "citations": 2,
+      "url": "https://scholar.google.com.hk/citations?view_op=view_citation&user=S4HPuI4AAAAJ&citation_for_view=S4HPuI4AAAAJ%3AbFI3QPDXJZMC"
+    }
+  ],
+  "updated_at": "2026-11-03T12:34:31+00:00"
+}
