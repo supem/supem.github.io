@@ -1,0 +1,164 @@
+{
+  "journals": [
+    {
+      "name": "ACS Applied Polymer Materials",
+      "jif": {
+        "year": 2025,
+        "value": "5.2",
+        "url": "https://pubs.acs.org/journal-metrics"
+      },
+      "jcr": {
+        "year": 2025,
+        "quartile": "Q2",
+        "url": "https://www.niic.nsc.ru/phocadownload/publications/2025/JCR_JournalImpactFactor_2026.pdf#page=81"
+      }
+    },
+    {
+      "name": "Alexandria Engineering Journal",
+      "jif": {
+        "year": 2025,
+        "value": "6.4",
+        "url": "https://libguides.lib.hku.hk/c.php?g=766195&p=5502329"
+      },
+      "jcr": {
+        "year": 2025,
+        "quartile": "Q1",
+        "url": "https://www.niic.nsc.ru/phocadownload/publications/2025/JCR_JournalImpactFactor_2026.pdf#page=55"
+      }
+    },
+    {
+      "name": "BMC Medical Informatics and Decision Making",
+      "jif": {
+        "year": 2025,
+        "value": "5.5",
+        "url": "https://link.springer.com/journal/12911"
+      },
+      "jcr": {
+        "year": 2025,
+        "quartile": "Q2",
+        "url": "https://www.niic.nsc.ru/phocadownload/publications/2025/JCR_JournalImpactFactor_2026.pdf#page=73",
+        "category": "Medical Informatics"
+      }
+    },
+    {
+      "name": "Engineering Applications of Artificial Intelligence",
+      "jif": {
+        "year": 2025,
+        "value": "9.0",
+        "url": "https://libguides.lib.hku.hk/c.php?g=766195&p=5502329"
+      },
+      "jcr": {
+        "year": 2025,
+        "quartile": "Q1",
+        "url": "https://www.niic.nsc.ru/phocadownload/publications/2025/JCR_JournalImpactFactor_2026.pdf#page=28"
+      },
+      "ccf": {
+        "year": 2026,
+        "rank": "C",
+        "category": "Artificial Intelligence",
+        "url": "https://www.ccf.org.cn/Academic_Evaluation/AI/"
+      }
+    },
+    {
+      "name": "Frontiers in Medicine",
+      "jif": {
+        "year": 2025,
+        "value": "3.6",
+        "url": "https://www.frontiersin.org/about/impact"
+      },
+      "jcr": {
+        "year": 2025,
+        "quartile": "Q1",
+        "url": "https://www.frontiersin.org/about/impact",
+        "category": "Medicine, General & Internal"
+      }
+    },
+    {
+      "name": "IEEE Sensors Journal",
+      "jif": {
+        "year": 2025,
+        "value": "4.5",
+        "url": "https://open.ieee.org/wp-content/uploads/IEEE-Title-List-September-2026.pdf#page=2"
+      },
+      "jcr": {
+        "year": 2025,
+        "quartile": "Q2",
+        "url": "https://open.ieee.org/wp-content/uploads/IEEE-Title-List-September-2026.pdf#page=2"
+      }
+    },
+    {
+      "name": "IEEE Signal Processing Letters",
+      "jif": {
+        "year": 2025,
+        "value": "3.6",
+        "url": "https://open.ieee.org/wp-content/uploads/IEEE-Title-List-September-2026.pdf#page=2"
+      },
+      "jcr": {
+        "year": 2025,
+        "quartile": "Q2",
+        "url": "https://open.ieee.org/wp-content/uploads/IEEE-Title-List-September-2026.pdf#page=2"
+      },
+      "ccf": {
+        "year": 2026,
+        "rank": "C",
+        "category": "Computer Graphics and Multimedia",
+        "url": "https://www.ccf.org.cn/Academic_Evaluation/CGAndMT/"
+      }
+    },
+    {
+      "name": "Journal of Consumer Health on the Internet",
+      "jif": {
+        "year": 2025,
+        "value": "0.8",
+        "url": "https://www.tandfonline.com/journals/wchi20/about-this-journal"
+      },
+      "jcr": {
+        "year": 2025,
+        "quartile": "Q4",
+        "url": "https://www.niic.nsc.ru/phocadownload/publications/2025/JCR_JournalImpactFactor_2026.pdf#page=518"
+      }
+    },
+    {
+      "name": "Journal of Medical Internet Research",
+      "jif": {
+        "year": 2025,
+        "value": "8.2",
+        "url": "https://www.jmir.org/announcements/701"
+      },
+      "jcr": {
+        "year": 2025,
+        "quartile": "Q1",
+        "url": "https://www.jmir.org/announcements/701",
+        "category": "Medical Informatics and Health Care Sciences & Services"
+      }
+    },
+    {
+      "name": "Scientific Reports",
+      "jif": {
+        "year": 2025,
+        "value": "4.9",
+        "url": "https://www.nature.com/nature-portfolio/about-journals/journal-metrics"
+      },
+      "jcr": {
+        "year": 2025,
+        "quartile": "Q1",
+        "url": "https://www.niic.nsc.ru/phocadownload/publications/2025/JCR_JournalImpactFactor_2026.pdf#page=88",
+        "category": "Multidisciplinary Sciences"
+      }
+    },
+    {
+      "name": "Urolithiasis",
+      "jif": {
+        "year": 2025,
+        "value": "2.6",
+        "url": "https://link.springer.com/journal/240"
+      },
+      "jcr": {
+        "year": 2025,
+        "quartile": "Q2",
+        "url": "https://www.niic.nsc.ru/phocadownload/publications/2025/JCR_JournalImpactFactor_2026.pdf#page=231",
+        "category": "Urology & Nephrology"
+      }
+    }
+  ]
+}

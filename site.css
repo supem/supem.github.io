@@ -38,6 +38,9 @@ main > section { margin-top: 2.4rem; }
 .authors, .venue { font-size: .9rem; line-height: 1.52; overflow-wrap: anywhere; }
 .authors { color: #353535; }
 .venue { font-style: italic; color: var(--secondary); }
+.journal-metrics { font-size: .81rem; font-style: normal; }
+.journal-metrics a { color: inherit; white-space: nowrap; text-decoration: underline dotted #aaa; text-underline-offset: .18em; }
+.journal-metrics a:hover, .journal-metrics a:focus-visible { color: var(--link); text-decoration-style: solid; }
 details > summary { width: fit-content; cursor: pointer; font-size: .92rem; }
 details[open] > summary { margin-bottom: 1.1rem; }
 .entry { display: grid; grid-template-columns: minmax(0,1fr) auto; align-items: baseline; gap: .15rem 1rem; margin-bottom: .95rem; }
