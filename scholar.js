@@ -33,12 +33,11 @@
   function validSnapshot(data) {
     return data?.profile_id === profileId && typeof data.updated_at === "string"
       && Number.isFinite(Date.parse(data.updated_at))
-      && ["citations", "h_index", "i10_index"].every((key) => isCount(data.metrics?.[key]))
+      && isCount(data.metrics?.citations)
       && Array.isArray(data.papers) && data.papers.length > 0
       && data.papers.every((p) => p && typeof p.id === "string" && p.id.startsWith(profileId + ":")
         && typeof p.title === "string" && p.title.trim() && typeof p.authors === "string"
-        && typeof p.venue === "string" && (p.year === null || Number.isInteger(p.year))
-        && isCount(p.citations));
+        && typeof p.venue === "string" && (p.year === null || Number.isInteger(p.year)));
   }
 
   async function readSnapshot(url) {
@@ -83,9 +82,9 @@
     const link = element("a", "", paper.title);
     link.href = recordUrl(paper);
     title.append(link);
-    info.append(title, element("p", "authors", paper.authors),
-      element("p", "venue", paper.venue),
-      element("p", "paper-cites", number.format(paper.citations) + (paper.citations === 1 ? " citation" : " citations")));
+    info.append(title);
+    if (paper.authors) info.append(element("p", "authors", paper.authors));
+    if (paper.venue) info.append(element("p", "venue", paper.venue));
     article.append(element("span", "paper-year", paper.year ?? "—"), info);
     return article;
   }
@@ -99,8 +98,6 @@
     byId("more-label").textContent = "More publications (" + number.format(remaining) + ")";
     byId("more-records").hidden = !remaining;
     byId("citation-total").textContent = number.format(data.metrics.citations);
-    byId("h-index").textContent = number.format(data.metrics.h_index);
-    byId("i10-index").textContent = number.format(data.metrics.i10_index);
     time.dateTime = data.updated_at;
     time.textContent = shanghaiTime.format(new Date(data.updated_at)) + " (Asia/Shanghai, UTC+8)";
   }
