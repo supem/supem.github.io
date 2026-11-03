@@ -79,6 +79,14 @@
     return node;
   }
 
+  function externalLink(label, url) {
+    const link = element("a", "", label);
+    link.href = url;
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+    return link;
+  }
+
   function normalizeName(value) {
     return value.normalize("NFKC").toLowerCase().replace(/\s+/g, " ").trim();
   }
@@ -92,8 +100,7 @@
   function metricLink(metric, label, description) {
     const href = httpsUrl(metric?.url);
     if (!href || !Number.isInteger(metric.year)) return null;
-    const link = element("a", "", label);
-    link.href = href;
+    const link = externalLink(label, href);
     link.title = description;
     link.setAttribute("aria-label", description);
     return link;
@@ -148,9 +155,7 @@
     const article = element("article", "paper");
     const info = element("div");
     const title = element("h3");
-    const link = element("a", "", paper.title);
-    link.href = recordUrl(paper);
-    title.append(link);
+    title.append(externalLink(paper.title, recordUrl(paper)));
     info.append(title);
     if (paper.authors) info.append(element("p", "authors", paper.authors));
     if (paper.venue) {
