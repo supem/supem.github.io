@@ -13,7 +13,7 @@ body {
   font: 16px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
 }
 main, footer { width: min(780px, calc(100% - 48px)); margin-inline: auto; }
-main { padding-top: clamp(2.25rem, 6vw, 4.5rem); }
+main { padding-top: clamp(1rem, 3vw, 2.25rem); }
 a, summary { color: var(--link); }
 a { text-decoration: none; }
 a:hover, summary:hover { text-decoration: underline; text-underline-offset: .18em; }
@@ -24,6 +24,8 @@ h1, h2, h3, p, ul { margin: 0; }
 h1 { font-size: clamp(2rem, 5vw, 2.45rem); line-height: 1.15; font-weight: 550; letter-spacing: -.045em; }
 .han { margin-left: .35rem; vertical-align: .1em; font: 400 1.12rem/1.4 "Microsoft YaHei", sans-serif; color: var(--secondary); letter-spacing: .07em; white-space: nowrap; }
 h2 { font-size: 1.43rem; font-weight: 550; line-height: 1.35; letter-spacing: -.025em; margin-bottom: 1.05rem; }
+.profile-heading { display: grid; grid-template-columns: max-content minmax(0, 1fr); align-items: center; gap: 1rem; }
+.ridgeline { display: block; width: 100%; height: auto; aspect-ratio: 4.4 / 1; object-fit: cover; object-position: center 57%; }
 .profile p { max-width: 74ch; margin-top: .75rem; }
 .profile .bio { margin-top: 1.15rem; }
 .profile .contacts { display: flex; flex-wrap: wrap; gap: .4rem 1rem; align-items: baseline; padding: 0; list-style: none; margin-top: .9rem; font-size: .94rem; }
@@ -54,6 +56,8 @@ footer { margin-top: 2.4rem; padding: .95rem 0 2.5rem; border-top: 1px solid #e1
 [hidden] { display: none !important; }
 @media (max-width: 520px) {
   main, footer { width: calc(100% - 36px); }
+  .profile-heading { grid-template-columns: 1fr; gap: .35rem; }
+  .ridgeline { grid-row: 1; aspect-ratio: 4 / 1; }
   .paper { gap: .55rem; }
   .entry { grid-template-columns: 1fr; }
   .entry .date { text-align: left; }
