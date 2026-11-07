@@ -5,10 +5,12 @@
   if (location.hostname === "supem.github.io") {
     urls.push("https://raw.githubusercontent.com/supem/supem.github.io/main/data/scholar.json");
   }
+  const statusUrls = urls.map((url) => url.replace("scholar.json", "scholar-status.json"));
 
   const byId = (id) => document.getElementById(id);
   const time = byId("sync-time");
   const status = byId("sync-status");
+  const delayNote = byId("sync-delay");
   const shanghaiTime = new Intl.DateTimeFormat("en-GB", {
     timeZone: "Asia/Shanghai", day: "2-digit", month: "short", year: "numeric",
     hour: "2-digit", minute: "2-digit", hourCycle: "h23"
@@ -17,17 +19,29 @@
   let lastCheck = 0;
   let checking = false;
   let lastRendered = "";
+  let syncState = null;
+  let snapshotUnavailable = false;
   let journalCatalog = null;
   const staticMetrics = new Map();
 
-  function showStatus(unavailable = false) {
-    const age = Date.now() - Date.parse(time.dateTime);
-    if (age > 3 * day) {
-      status.textContent = "The last successful sync was more than three days ago. Google Scholar may have newer records.";
-    } else if (unavailable) {
+  function showStatus() {
+    const updatedAt = Date.parse(time.dateTime);
+    const failed = syncState?.status === "failure" && Date.parse(syncState.last_attempt_at) > updatedAt;
+    const stale = Date.now() - updatedAt > day;
+    if (failed) {
+      status.textContent = "The latest Google Scholar sync failed. Showing data from the last successful update.";
+    } else if (stale) {
+      status.textContent = "The last successful sync was more than 24 hours ago. Google Scholar may have newer records.";
+    } else if (snapshotUnavailable) {
       status.textContent = "Could not check for updates. Showing the last saved snapshot.";
     } else {
       status.textContent = "";
+    }
+    if (delayNote) {
+      delayNote.textContent = failed || stale ? " · update delayed" : "";
+      delayNote.title = (failed || stale) && Number.isFinite(updatedAt)
+        ? "Last successful update " + shanghaiTime.format(new Date(updatedAt)) + " (Asia/Shanghai, UTC+8)"
+        : "";
     }
   }
 
@@ -52,6 +66,20 @@
     } finally {
       clearTimeout(timeout);
     }
+  }
+
+  async function refreshSyncState() {
+    await Promise.allSettled(statusUrls.map(async (url) => {
+      const data = await readJson(url);
+      if (data?.profile_id !== profileId || !["success", "failure"].includes(data.status)
+          || typeof data.last_attempt_at !== "string" || !Number.isFinite(Date.parse(data.last_attempt_at))) return;
+      const incoming = Date.parse(data.last_attempt_at);
+      const current = Date.parse(syncState?.last_attempt_at);
+      if (!syncState || incoming > current || (incoming === current && data.status === "success")) {
+        syncState = data;
+        showStatus();
+      }
+    }));
   }
 
   function httpsUrl(value) {
@@ -185,18 +213,23 @@
     checking = true;
     lastCheck = Date.now();
     refreshJournalCatalog();
+    refreshSyncState();
+    let receivedSnapshot = false;
     try {
-      const results = await Promise.allSettled(urls.map(readJson));
-      const snapshots = results.filter((r) => r.status === "fulfilled" && validSnapshot(r.value)).map((r) => r.value);
-      snapshots.sort((a, b) => Date.parse(b.updated_at) - Date.parse(a.updated_at));
-      const latest = snapshots[0];
-      const shown = Date.parse(time.dateTime);
-      if (latest && lastRendered !== latest.updated_at &&
-          (!Number.isFinite(shown) || Date.parse(latest.updated_at) >= shown)) {
-        render(latest);
-        lastRendered = latest.updated_at;
-      }
-      showStatus(!latest);
+      await Promise.allSettled(urls.map(async (url) => {
+        const data = await readJson(url);
+        if (!validSnapshot(data)) return;
+        receivedSnapshot = true;
+        snapshotUnavailable = false;
+        const shown = Date.parse(time.dateTime);
+        if (lastRendered !== data.updated_at && (!Number.isFinite(shown) || Date.parse(data.updated_at) >= shown)) {
+          render(data);
+          lastRendered = data.updated_at;
+        }
+        showStatus();
+      }));
+      snapshotUnavailable = !receivedSnapshot;
+      showStatus();
     } finally {
       checking = false;
     }

@@ -2,13 +2,14 @@ name: Sync Google Scholar
 
 on:
   schedule:
-    - cron: '23 22 * * *'
+    - cron: '23 4,10,16,22 * * *'
   workflow_dispatch:
   push:
     branches: [main]
     paths:
       - '.github/workflows/scholar.yml'
       - 'scripts/sync_scholar.py'
+      - 'tests/test_sync_scholar.py'
 
 permissions:
   contents: write
@@ -20,7 +21,7 @@ concurrency:
 jobs:
   sync:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
         with:
@@ -29,12 +30,24 @@ jobs:
         with:
           python-version: '3.12'
       - run: python -m pip install 'beautifulsoup4>=4.12,<5' 'protego>=0.3,<1'
-      - run: python scripts/sync_scholar.py
-      - name: Publish the verified snapshot
+      - name: Test sync failure handling
+        run: python -m unittest discover -s tests -v
+      - name: Fetch the current Scholar profile
+        id: scholar
+        continue-on-error: true
+        run: python scripts/sync_scholar.py --update-page index.html
+      - name: Publish the snapshot and sync status
+        if: ${{ !cancelled() && (steps.scholar.outcome == 'success' || steps.scholar.outcome == 'failure') }}
         run: |
-          git add -- data/scholar.json
+          git add -- data/scholar.json data/scholar-status.json index.html
           if git diff --cached --quiet; then exit 0; fi
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git commit -m 'Refresh Google Scholar publications and citations'
+          git commit -m 'Refresh Google Scholar data and sync status'
+          git pull --rebase origin main
           git push origin HEAD:main
+      - name: Report an unsuccessful sync
+        if: ${{ !cancelled() && steps.scholar.outcome == 'failure' }}
+        run: |
+          echo '::error::Google Scholar sync failed. See the fetch and publish steps for details; the last verified data is retained.'
+          exit 1

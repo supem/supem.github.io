@@ -1,14 +1,17 @@
 """Refresh this site's public Google Scholar snapshot from its author's profile."""
 
 import argparse
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
+from http.client import HTTPException
 import json
 import os
 from pathlib import Path
 import re
 import sys
+import time
 from tempfile import NamedTemporaryFile
 from urllib.parse import parse_qs, urlencode, urlsplit
+from urllib.error import HTTPError, URLError
 from urllib.request import HTTPRedirectHandler, Request, build_opener
 
 from bs4 import BeautifulSoup
@@ -22,27 +25,48 @@ BOT = "ScholarHomepageSync"
 OUTPUT = Path(__file__).resolve().parents[1] / "data" / "scholar.json"
 
 
+class SyncError(ValueError):
+    def __init__(self, message, code):
+        super().__init__(message)
+        self.code = code
+
+
 class NoRedirects(HTTPRedirectHandler):
     def redirect_request(self, req, fp, code, msg, headers, newurl):
-        raise ValueError(f"Scholar redirected the request (HTTP {code})")
+        raise SyncError(f"Scholar redirected the request (HTTP {code})", "redirect")
 
 
-def fetch(url):
+def fetch(url, stage):
     request = Request(url, headers={
         "User-Agent": f"{BOT}/1.0 (+https://supem.github.io/)",
         "Accept-Language": "en",
     })
-    with build_opener(NoRedirects).open(request, timeout=30) as response:
-        return response.read().decode(response.headers.get_content_charset() or "utf-8")
+    for attempt in range(3):
+        try:
+            with build_opener(NoRedirects).open(request, timeout=30) as response:
+                return response.read().decode(response.headers.get_content_charset() or "utf-8")
+        except HTTPError as error:
+            error.close()
+            # Access denials and rate limits wait for the next scheduled check.
+            if error.code not in (408, 500, 502, 503, 504) or attempt == 2:
+                raise SyncError(f"{stage} request failed (HTTP {error.code})",
+                                f"http_{error.code}") from error
+        except (URLError, TimeoutError, ConnectionError, HTTPException) as error:
+            if attempt == 2:
+                raise SyncError(f"{stage} request timed out or could not connect",
+                                "network_error") from error
+        delay = (5, 15)[attempt]
+        print(f"Temporary {stage} request failure; retrying in {delay} seconds.", file=sys.stderr)
+        time.sleep(delay)
 
 
 def fetch_profile():
-    rules = fetch(f"{ORIGIN}/robots.txt")
+    rules = fetch(f"{ORIGIN}/robots.txt", "robots.txt")
     if not re.search(r"(?im)^\s*User-agent:", rules):
         raise ValueError("could not verify the origin's robots.txt")
     if not Protego.parse(rules).can_fetch(PROFILE_URL, BOT):
-        raise ValueError("robots.txt disallows the profile request")
-    return fetch(PROFILE_URL)
+        raise SyncError("robots.txt disallows the profile request", "robots_disallowed")
+    return fetch(PROFILE_URL, "profile")
 
 
 def content(tag, field):
@@ -149,36 +173,93 @@ def reconcile(fresh, previous, allow_large_removal):
                     paper[key] = full
 
 
-def write_snapshot(output, snapshot):
+def write_text(output, text):
     output.parent.mkdir(parents=True, exist_ok=True)
     with NamedTemporaryFile(mode="w", encoding="utf-8", newline="\n", dir=output.parent,
                             prefix=".scholar-", suffix=".tmp", delete=False) as tmp:
         temp_path = Path(tmp.name)
     try:
-        temp_path.write_text(json.dumps(snapshot, ensure_ascii=False, indent=2) + "\n",
-                             encoding="utf-8", newline="\n")
+        temp_path.write_text(text, encoding="utf-8", newline="\n")
         os.replace(temp_path, output)
     finally:
         temp_path.unlink(missing_ok=True)
 
 
+def write_snapshot(output, snapshot):
+    write_text(output, json.dumps(snapshot, ensure_ascii=False, indent=2) + "\n")
+
+
+def render_page(source, snapshot):
+    """Keep the citation count and timestamp correct before JavaScript loads."""
+    stamp = snapshot["updated_at"]
+    checked = datetime.fromisoformat(stamp).astimezone(timezone(timedelta(hours=8)))
+    label = checked.strftime("%d %b %Y, %H:%M") + " (Asia/Shanghai, UTC+8)"
+    page, count_matches = re.subn(r'(<span id="citation-total">)[^<]*(</span>)',
+                                 lambda match: f'{match[1]}{snapshot["metrics"]["citations"]:,}{match[2]}',
+                                 source)
+    page, time_matches = re.subn(r'<time id="sync-time" datetime="[^"]*">[^<]*</time>',
+                                f'<time id="sync-time" datetime="{stamp}">{label}</time>', page)
+    if count_matches != 1 or time_matches != 1:
+        raise ValueError("could not locate the page's citation count and sync timestamp")
+    return page
+
+
+def utc_now():
+    return datetime.now(timezone.utc).isoformat(timespec="seconds")
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", type=Path, default=OUTPUT)
+    parser.add_argument("--status-output", type=Path,
+                        help="sync health JSON; defaults to a sibling of --output")
+    parser.add_argument("--update-page", type=Path,
+                        help="also update the static page's citation count and timestamp")
     parser.add_argument("--allow-large-removal", action="store_true",
                         help="accept a manually verified large change in article IDs")
     args = parser.parse_args()
+    health_path = args.status_output or args.output.with_name(args.output.stem + "-status.json")
+    health = {"profile_id": PROFILE_ID, "last_attempt_at": utc_now(),
+              "last_success_at": None, "status": "failure", "error_code": None}
+    run_id = os.environ.get("GITHUB_RUN_ID", "")
+    if run_id.isdigit():
+        health["run_url"] = f"https://github.com/supem/supem.github.io/actions/runs/{run_id}"
     try:
-        fresh = parse_profile(fetch_profile())
+        old = None
+        old_source = None
         if args.output.exists():
-            old = json.loads(args.output.read_text(encoding="utf-8"))
+            old_source = args.output.read_text(encoding="utf-8")
+            old = json.loads(old_source)
+            health["last_success_at"] = old.get("updated_at")
+        fresh = parse_profile(fetch_profile())
+        if old is not None:
             reconcile(fresh, old, args.allow_large_removal)
-        fresh["updated_at"] = datetime.now(timezone.utc).isoformat(timespec="seconds")
+        fresh["updated_at"] = utc_now()
+        page = render_page(args.update_page.read_text(encoding="utf-8"), fresh) if args.update_page else None
         write_snapshot(args.output, fresh)
+        try:
+            if page is not None:
+                write_text(args.update_page, page)
+        except OSError:
+            # Keep the published snapshot and its static fallback in step.
+            if old_source is None:
+                args.output.unlink(missing_ok=True)
+            else:
+                write_text(args.output, old_source)
+            raise
+        health["last_success_at"] = fresh["updated_at"]
+        health.update(status="success", error_code=None, last_attempt_at=utc_now())
+        write_snapshot(health_path, health)
     except (OSError, ValueError, KeyError, TypeError) as error:
-        print(f"Scholar sync failed: {error}. Previous snapshot preserved.", file=sys.stderr)
+        health.update(status="failure", last_attempt_at=utc_now(), error_code=getattr(error, "code",
+                      "storage_error" if isinstance(error, OSError) else "validation_error"))
+        try:
+            write_snapshot(health_path, health)
+        except OSError as status_error:
+            print(f"Could not save sync status: {status_error}", file=sys.stderr)
+        print(f"Scholar sync failed: {error}. Last verified snapshot retained.", file=sys.stderr)
         return 1
-    print(f"Updated {len(fresh['papers'])} papers and all-time citation metrics.")
+    print(f"Updated {len(fresh['papers'])} papers and {fresh['metrics']['citations']} all-time citations.")
     return 0
 
 
