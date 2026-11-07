@@ -1,7 +1,7 @@
 {
   "profile_id": "S4HPuI4AAAAJ",
   "metrics": {
-    "citations": 121,
+    "citations": 123,
     "h_index": 6,
     "i10_index": 5
   },
@@ -66,7 +66,7 @@
       "authors": "C Mao, J Li, PCI Pang, Q Zhu, R Chen",
       "venue": "Journal of Medical Internet Research 27, e66365",
       "year": 2025,
-      "citations": 10,
+      "citations": 11,
       "url": "https://scholar.google.com.hk/citations?view_op=view_citation&user=S4HPuI4AAAAJ&citation_for_view=S4HPuI4AAAAJ%3AoNZyr7d5Mn4C"
     },
     {
@@ -75,7 +75,7 @@
       "authors": "J Guo, CF Chong, X Liang, C Mao, J Li, CT Lam, J Shen, BK Ng",
       "venue": "IEEE Sensors Journal 25 (8), 14328-14341",
       "year": 2025,
-      "citations": 1,
+      "citations": 2,
       "url": "https://scholar.google.com.hk/citations?view_op=view_citation&user=S4HPuI4AAAAJ&citation_for_view=S4HPuI4AAAAJ%3Akz9GbA2Ns4gC"
     },
     {
@@ -133,5 +133,5 @@
       "url": "https://scholar.google.com.hk/citations?view_op=view_citation&user=S4HPuI4AAAAJ&citation_for_view=S4HPuI4AAAAJ%3AbFI3QPDXJZMC"
     }
   ],
-  "updated_at": "2026-11-04T02:28:16+00:00"
+  "updated_at": "2026-11-07T12:14:41+00:00"
 }
