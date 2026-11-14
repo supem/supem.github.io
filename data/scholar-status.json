@@ -1,8 +1,8 @@
 {
   "profile_id": "S4HPuI4AAAAJ",
-  "last_attempt_at": "2026-11-14T11:37:55+00:00",
+  "last_attempt_at": "2026-11-14T17:15:10+00:00",
   "last_success_at": "2026-11-14T11:37:55+00:00",
-  "status": "success",
-  "error_code": null,
-  "run_url": "https://github.com/supem/supem.github.io/actions/runs/43590937458"
+  "status": "failure",
+  "error_code": "http_403",
+  "run_url": "https://github.com/supem/supem.github.io/actions/runs/43620062368"
 }
