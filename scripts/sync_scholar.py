@@ -1,7 +1,7 @@
 """Refresh this site's public Google Scholar snapshot from its author's profile."""
 
 import argparse
-from datetime import datetime, timedelta, timezone
+from datetime import datetime, timezone
 from http.client import HTTPException
 import json
 import os
@@ -190,17 +190,15 @@ def write_snapshot(output, snapshot):
 
 
 def render_page(source, snapshot):
-    """Keep the citation count and timestamp correct before JavaScript loads."""
+    """Update the visible citation count and its snapshot metadata."""
     stamp = snapshot["updated_at"]
-    checked = datetime.fromisoformat(stamp).astimezone(timezone(timedelta(hours=8)))
-    label = checked.strftime("%d %b %Y, %H:%M") + " (Asia/Shanghai, UTC+8)"
     page, count_matches = re.subn(r'(<span id="citation-total">)[^<]*(</span>)',
                                  lambda match: f'{match[1]}{snapshot["metrics"]["citations"]:,}{match[2]}',
                                  source)
-    page, time_matches = re.subn(r'<time id="sync-time" datetime="[^"]*">[^<]*</time>',
-                                f'<time id="sync-time" datetime="{stamp}">{label}</time>', page)
+    page, time_matches = re.subn(r'(<meta name="scholar-snapshot" content=")[^"]*("\s*/?>)',
+                                lambda match: f'{match[1]}{stamp}{match[2]}', page)
     if count_matches != 1 or time_matches != 1:
-        raise ValueError("could not locate the page's citation count and sync timestamp")
+        raise ValueError("expected one citation count and one scholar-snapshot meta tag")
     return page
 
 

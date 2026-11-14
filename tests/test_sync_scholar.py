@@ -12,6 +12,8 @@ import unittest
 from unittest.mock import patch
 from urllib.error import HTTPError, URLError
 
+from bs4 import BeautifulSoup
+
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 import sync_scholar as sync
 
@@ -85,9 +87,9 @@ class SyncTests(unittest.TestCase):
         output.write_text(json.dumps(self.old), encoding="utf-8")
         original = output.read_bytes()
         page = Path(directory) / "index.html"
-        page.write_text(page_source or '<span id="citation-total">121</span>'
-                        '<time id="sync-time" datetime="2026-11-04T02:28:16+00:00">old</time>',
-                        encoding="utf-8")
+        template = ('<head><meta name="scholar-snapshot" content="2026-11-04T02:28:16+00:00"></head>'
+                    '<body><span id="citation-total">121</span> citations</body>')
+        page.write_text(page_source or template, encoding="utf-8")
         args = ["sync_scholar.py", "--output", str(output), "--update-page", str(page)]
         with patch.object(sys, "argv", args), patch.object(sys, "stderr", StringIO()), \
                 patch.object(sys, "stdout", StringIO()), \
@@ -109,16 +111,16 @@ class SyncTests(unittest.TestCase):
             self.assertEqual(health["last_success_at"], self.old["updated_at"])
             self.assertGreater(health["last_attempt_at"], health["last_success_at"])
 
-    def test_success_updates_snapshot_static_count_timestamp_and_health(self):
+    def test_success_updates_visible_count_hidden_timestamp_and_health(self):
         with TemporaryDirectory() as directory:
             result, output, page, health, _ = self.run_sync(directory)
             data = json.loads(output.read_text(encoding="utf-8"))
-            html = page.read_text(encoding="utf-8")
+            html = BeautifulSoup(page.read_text(encoding="utf-8"), "html.parser")
             self.assertEqual(result, 0)
             self.assertEqual(data["metrics"]["citations"], 123)
-            self.assertIn('>123</span>', html)
-            self.assertIn(data["updated_at"], html)
-            self.assertIn("Asia/Shanghai, UTC+8", html)
+            self.assertEqual(html.body.get_text(" ", strip=True), "123 citations")
+            self.assertEqual(html.head.select_one('meta[name="scholar-snapshot"]')["content"],
+                             data["updated_at"])
             self.assertEqual(health["status"], "success")
             self.assertIsNone(health["error_code"])
             self.assertEqual(health["last_success_at"], data["updated_at"])

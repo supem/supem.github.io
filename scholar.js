@@ -1,49 +1,17 @@
 (() => {
   const profileId = "S4HPuI4AAAAJ";
-  const day = 24 * 60 * 60 * 1000;
   const urls = ["./data/scholar.json"];
   if (location.hostname === "supem.github.io") {
     urls.push("https://raw.githubusercontent.com/supem/supem.github.io/main/data/scholar.json");
   }
-  const statusUrls = urls.map((url) => url.replace("scholar.json", "scholar-status.json"));
-
   const byId = (id) => document.getElementById(id);
-  const time = byId("sync-time");
-  const status = byId("sync-status");
-  const delayNote = byId("sync-delay");
-  const shanghaiTime = new Intl.DateTimeFormat("en-GB", {
-    timeZone: "Asia/Shanghai", day: "2-digit", month: "short", year: "numeric",
-    hour: "2-digit", minute: "2-digit", hourCycle: "h23"
-  });
+  const snapshotMeta = document.querySelector('meta[name="scholar-snapshot"]');
   const number = new Intl.NumberFormat("en-US");
   let lastCheck = 0;
   let checking = false;
   let lastRendered = "";
-  let syncState = null;
-  let snapshotUnavailable = false;
   let journalCatalog = null;
   const staticMetrics = new Map();
-
-  function showStatus() {
-    const updatedAt = Date.parse(time.dateTime);
-    const failed = syncState?.status === "failure" && Date.parse(syncState.last_attempt_at) > updatedAt;
-    const stale = Date.now() - updatedAt > day;
-    if (failed) {
-      status.textContent = "The latest Google Scholar sync failed. Showing data from the last successful update.";
-    } else if (stale) {
-      status.textContent = "The last successful sync was more than 24 hours ago. Google Scholar may have newer records.";
-    } else if (snapshotUnavailable) {
-      status.textContent = "Could not check for updates. Showing the last saved snapshot.";
-    } else {
-      status.textContent = "";
-    }
-    if (delayNote) {
-      delayNote.textContent = failed || stale ? " · update delayed" : "";
-      delayNote.title = (failed || stale) && Number.isFinite(updatedAt)
-        ? "Last successful update " + shanghaiTime.format(new Date(updatedAt)) + " (Asia/Shanghai, UTC+8)"
-        : "";
-    }
-  }
 
   const isCount = (value) => Number.isSafeInteger(value) && value >= 0;
   function validSnapshot(data) {
@@ -66,20 +34,6 @@
     } finally {
       clearTimeout(timeout);
     }
-  }
-
-  async function refreshSyncState() {
-    await Promise.allSettled(statusUrls.map(async (url) => {
-      const data = await readJson(url);
-      if (data?.profile_id !== profileId || !["success", "failure"].includes(data.status)
-          || typeof data.last_attempt_at !== "string" || !Number.isFinite(Date.parse(data.last_attempt_at))) return;
-      const incoming = Date.parse(data.last_attempt_at);
-      const current = Date.parse(syncState?.last_attempt_at);
-      if (!syncState || incoming > current || (incoming === current && data.status === "success")) {
-        syncState = data;
-        showStatus();
-      }
-    }));
   }
 
   function httpsUrl(value) {
@@ -181,31 +135,57 @@
 
   function paperArticle(paper) {
     const article = element("article", "paper");
-    const info = element("div");
-    const title = element("h3");
+    const title = element("h4");
     title.append(externalLink(paper.title, recordUrl(paper)));
-    info.append(title);
-    if (paper.authors) info.append(element("p", "authors", paper.authors));
+    article.append(title);
+    if (paper.authors) {
+      const authors = element("p", "authors");
+      paper.authors.split(",").forEach((part, index) => {
+        const author = part.trim();
+        if (index > 0) authors.append(", ");
+        authors.append(/^(?:C|Chao) Mao$/i.test(author) ? element("strong", "", author) : author);
+      });
+      article.append(authors);
+    }
     if (paper.venue) {
       const venue = element("p", "venue");
       annotateVenue(venue, paper.venue);
-      info.append(venue);
+      article.append(venue);
     }
-    article.append(element("span", "paper-year", paper.year ?? "—"), info);
     return article;
   }
 
   function render(data) {
-    const papers = [...data.papers].sort((a, b) => (b.year ?? 0) - (a.year ?? 0));
-    const cards = papers.map(paperArticle);
-    byId("recent-papers").replaceChildren(...cards.slice(0, 5));
-    byId("more-papers").replaceChildren(...cards.slice(5));
-    const remaining = Math.max(0, cards.length - 5);
-    byId("more-label").textContent = "More publications (" + number.format(remaining) + ")";
+    const papersByYear = new Map();
+    for (const paper of data.papers) {
+      if (!papersByYear.has(paper.year)) papersByYear.set(paper.year, []);
+      papersByYear.get(paper.year).push(paper);
+    }
+    const years = [...papersByYear.keys()].filter((year) => year !== null).sort((a, b) => b - a);
+    const visibleYears = new Set(years.length ? years.slice(0, 2) : [null]);
+    if (papersByYear.has(null)) years.push(null);
+    const recent = document.createDocumentFragment();
+    const earlier = document.createDocumentFragment();
+    let remaining = 0;
+    for (const year of years) {
+      const papers = papersByYear.get(year);
+      const section = element("section", "year-group");
+      const entries = element("div", "year-papers");
+      entries.append(...papers.map(paperArticle));
+      section.append(element("h3", "year-label", year ?? "Undated"), entries);
+      if (visibleYears.has(year)) {
+        recent.append(section);
+      } else {
+        earlier.append(section);
+        remaining += papers.length;
+      }
+    }
+    byId("recent-papers").replaceChildren(recent);
+    byId("more-papers").replaceChildren(earlier);
+    byId("more-label").textContent = "Earlier publications (" + number.format(remaining) + ")";
     byId("more-records").hidden = !remaining;
     byId("citation-total").textContent = number.format(data.metrics.citations);
-    time.dateTime = data.updated_at;
-    time.textContent = shanghaiTime.format(new Date(data.updated_at)) + " (Asia/Shanghai, UTC+8)";
+    snapshotMeta.content = data.updated_at;
   }
 
   async function refresh() {
@@ -213,33 +193,25 @@
     checking = true;
     lastCheck = Date.now();
     refreshJournalCatalog();
-    refreshSyncState();
-    let receivedSnapshot = false;
     try {
       await Promise.allSettled(urls.map(async (url) => {
         const data = await readJson(url);
         if (!validSnapshot(data)) return;
-        receivedSnapshot = true;
-        snapshotUnavailable = false;
-        const shown = Date.parse(time.dateTime);
+        const shown = Date.parse(snapshotMeta.content);
         if (lastRendered !== data.updated_at && (!Number.isFinite(shown) || Date.parse(data.updated_at) >= shown)) {
           render(data);
           lastRendered = data.updated_at;
         }
-        showStatus();
       }));
-      snapshotUnavailable = !receivedSnapshot;
-      showStatus();
     } finally {
       checking = false;
     }
   }
 
-  if (!time || !status) return;
+  if (!snapshotMeta) return;
   for (const group of document.querySelectorAll(".paper .venue .journal-metrics")) {
     staticMetrics.set(normalizeName(readVenue(group.parentElement)), group.cloneNode(true));
   }
-  showStatus();
   refresh();
   window.addEventListener("focus", refresh);
 })();
