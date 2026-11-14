@@ -22,10 +22,8 @@ a:hover { text-decoration-color: currentColor; }
   gap: clamp(52px, 7vw, 108px); align-items: start;
 }
 h1 { font: 400 clamp(2.8rem, 4.5vw, 4rem)/.95 var(--serif); letter-spacing: -.055em; }
-.han { display: block; margin: .62rem 0 0 .14rem; font: 400 1.23rem/1.4 "Songti SC", SimSun, var(--serif); letter-spacing: .23em; }
 .ridgeline { display: block; width: 100%; height: auto; margin: 1rem 0 1.1rem; }
 .introduction { font: 1.035rem/1.62 var(--serif); }
-.introduction p + p { margin-top: .84rem; }
 .contacts { list-style: none; padding: 0; margin-top: 1.4rem; font-size: .88rem; line-height: 1.8; }
 .contacts li + li { margin-top: .12rem; }
 .contacts a + a { margin-left: 1.1em; }
@@ -77,10 +75,8 @@ summary::marker { font-size: .75em; }
 @media (max-width: 560px) {
   .folio { width: calc(100% - 40px); padding-top: 1.65rem; }
   h1 { font-size: 2.62rem; }
-  .han { margin-top: .38rem; font-size: 1rem; }
   .signature { gap: .5rem; }
   .introduction { font-size: 1rem; line-height: 1.5; }
-  .introduction p + p { margin-top: .65rem; }
   h2 { font-size: 1.78rem; }
   .year-group { display: block; margin-top: 1rem; }
   .year-label { margin-bottom: .55rem; }
