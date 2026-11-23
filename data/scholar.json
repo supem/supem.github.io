@@ -1,9 +1,9 @@
 {
   "profile_id": "S4HPuI4AAAAJ",
   "metrics": {
-    "citations": 125,
+    "citations": 129,
     "h_index": 6,
-    "i10_index": 5
+    "i10_index": 6
   },
   "papers": [
     {
@@ -66,7 +66,7 @@
       "authors": "C Mao, J Li, PCI Pang, Q Zhu, R Chen",
       "venue": "Journal of Medical Internet Research 27, e66365",
       "year": 2025,
-      "citations": 11,
+      "citations": 12,
       "url": "https://scholar.google.com.hk/citations?view_op=view_citation&user=S4HPuI4AAAAJ&citation_for_view=S4HPuI4AAAAJ%3AoNZyr7d5Mn4C"
     },
     {
@@ -84,7 +84,7 @@
       "authors": "J Li, Y Yang, C Mao, PCI Pang, Q Zhu, D Xu, Y Wang",
       "venue": "Journal of Medical Internet Research 27, e66344",
       "year": 2025,
-      "citations": 25,
+      "citations": 26,
       "url": "https://scholar.google.com.hk/citations?view_op=view_citation&user=S4HPuI4AAAAJ&citation_for_view=S4HPuI4AAAAJ%3AVaXvl8Fpj5cC"
     },
     {
@@ -98,11 +98,11 @@
     },
     {
       "id": "S4HPuI4AAAAJ:qjMakFHDy7sC",
-      "title": "Automatic medical specialty classification based on patients’ description of their symptoms",
+      "title": "Automatic medical specialty classification based on patients�� description of their symptoms",
       "authors": "C Mao, Q Zhu, R Chen, W Su",
       "venue": "BMC Medical Informatics and Decision Making 23 (1), 1-9",
       "year": 2023,
-      "citations": 29,
+      "citations": 30,
       "url": "https://scholar.google.com.hk/citations?view_op=view_citation&user=S4HPuI4AAAAJ&citation_for_view=S4HPuI4AAAAJ%3AqjMakFHDy7sC"
     },
     {
@@ -111,7 +111,7 @@
       "authors": "Q Zhu, C Shen, R Chen, C Mao, Y He, K Yang",
       "venue": "ACS Applied Polymer Materials 5 (9), 6695-6719",
       "year": 2023,
-      "citations": 9,
+      "citations": 10,
       "url": "https://scholar.google.com.hk/citations?view_op=view_citation&user=S4HPuI4AAAAJ&citation_for_view=S4HPuI4AAAAJ%3A7PzlFSSx8tAC"
     },
     {
@@ -133,5 +133,5 @@
       "url": "https://scholar.google.com.hk/citations?view_op=view_citation&user=S4HPuI4AAAAJ&citation_for_view=S4HPuI4AAAAJ%3AbFI3QPDXJZMC"
     }
   ],
-  "updated_at": "2026-11-15T21:07:24+00:00"
+  "updated_at": "2026-11-23T18:08:08+00:00"
 }
