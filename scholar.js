@@ -7,18 +7,11 @@
   const byId = (id) => document.getElementById(id);
   const snapshotMeta = document.querySelector('meta[name="scholar-snapshot"]');
   const publicationList = byId("publication-list");
-  const publicationTools = byId("publication-tools");
-  const paperSearch = byId("paper-search");
-  const paperYear = byId("paper-year");
-  const paperCount = byId("paper-count");
-  const paperEmpty = byId("paper-empty");
-  const paperReset = byId("paper-reset");
   const number = new Intl.NumberFormat("en-US");
   let lastCheck = 0;
   let checking = false;
   let lastRendered = "";
   let journalCatalog = null;
-  let publicationGroups = [];
   const staticMetrics = new Map();
 
   const isCount = (value) => Number.isSafeInteger(value) && value >= 0;
@@ -79,54 +72,6 @@
 
   function normalizeName(value) {
     return value.normalize("NFKC").toLowerCase().replace(/\s+/g, " ").trim();
-  }
-
-  function applyFilters() {
-    const tokens = normalizeName(paperSearch.value).split(" ").filter(Boolean);
-    const filtered = tokens.length > 0 || paperYear.value !== "";
-    let total = 0;
-    let matches = 0;
-    for (const group of publicationGroups) {
-      let groupMatches = 0;
-      for (const paper of group.papers) {
-        const matchesYear = !paperYear.value || paperYear.value === group.year;
-        const matchesSearch = tokens.every((token) => paper.searchText.includes(token));
-        paper.article.hidden = !(matchesYear && matchesSearch);
-        if (!paper.article.hidden) groupMatches += 1;
-      }
-      group.section.hidden = groupMatches === 0;
-      total += group.papers.length;
-      matches += groupMatches;
-    }
-    paperCount.textContent = filtered
-      ? number.format(matches) + " of " + number.format(total) + " publications"
-      : number.format(total) + (total === 1 ? " publication" : " publications");
-    paperEmpty.hidden = matches > 0;
-    paperReset.hidden = !filtered;
-  }
-
-  function indexPublications() {
-    const selectedYear = paperYear.value;
-    publicationGroups = [...publicationList.querySelectorAll(".year-group")].map((section) => ({
-      section,
-      year: section.querySelector(".year-label").textContent.trim(),
-      papers: [...section.querySelectorAll(".paper")].map((article) => ({
-        article,
-        searchText: normalizeName([...article.querySelectorAll("h4, .authors, .venue")]
-          .map((part) => part.textContent).join(" "))
-      }))
-    }));
-    const allYears = element("option", "", "All years");
-    allYears.value = "";
-    const years = [...new Set(publicationGroups.map((group) => group.year))];
-    const options = years.map((year) => {
-      const option = element("option", "", year);
-      option.value = year;
-      return option;
-    });
-    paperYear.replaceChildren(allYears, ...options);
-    if (years.includes(selectedYear)) paperYear.value = selectedYear;
-    applyFilters();
   }
 
   function journalFor(venue) {
@@ -190,7 +135,6 @@
       return; // Keep existing annotations if the independent catalog is offline.
     }
     for (const para of document.querySelectorAll(".paper .venue")) annotateVenue(para, readVenue(para));
-    indexPublications();
   }
 
   function paperArticle(paper) {
@@ -235,7 +179,6 @@
     publicationList.replaceChildren(publications);
     byId("citation-total").textContent = number.format(data.metrics.citations);
     snapshotMeta.content = data.updated_at;
-    indexPublications();
   }
 
   async function refresh() {
@@ -258,21 +201,10 @@
     }
   }
 
-  if (!snapshotMeta || !publicationList || !publicationTools || !paperSearch || !paperYear
-      || !paperCount || !paperEmpty || !paperReset) return;
+  if (!snapshotMeta || !publicationList) return;
   for (const group of document.querySelectorAll(".paper .venue .journal-metrics")) {
     staticMetrics.set(normalizeName(readVenue(group.parentElement)), group.cloneNode(true));
   }
-  indexPublications();
-  publicationTools.hidden = false;
-  paperSearch.addEventListener("input", applyFilters);
-  paperYear.addEventListener("change", applyFilters);
-  paperReset.addEventListener("click", () => {
-    paperSearch.value = "";
-    paperYear.value = "";
-    applyFilters();
-    paperSearch.focus();
-  });
   refresh();
   window.addEventListener("focus", refresh);
 })();
